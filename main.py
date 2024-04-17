@@ -1,7 +1,7 @@
 import keyboard
 import os
 import art_dimension
-from time import sleep
+import time
 
 
 def title(): # title screen code
@@ -14,7 +14,7 @@ def title(): # title screen code
 """
 
 		print(title_screen)
-		sleep(.01)
+		time.sleep(.01)
 		os.system("cls")
 		if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
 			selections = "  Start\n> Help\n  Quit"
@@ -29,7 +29,7 @@ def title(): # title screen code
 			selections = "  Start\n> Help\n  Quit"
 			continue
 		if keyboard.is_pressed("enter") and selections == "> Start\n  Help\n  Quit":
-			game_start()
+			game()
 			break     
 		if keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
 			break
@@ -54,7 +54,7 @@ game over
             selections = "  Once Again          > Quit"
             continue
         if keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
-           game_start()
+           game()
            break     
         if keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
            break
@@ -70,11 +70,17 @@ def character_select(): # where player names their character
 	player2_name = input("Name: ")
 
 
-def game_start():
+def game():
 	p1_health = 100
 	p2_health = 100
+	p1_keys = ["a", "s", "d"]
+	p2_keys = ["j", "k", "l"]
 	while p1_health > 0 and p2_health > 0:
-		pass
+		
+		start = time.time()
+		while end - start > 20.0:
+			end = time.time()
+			
 
 
 
