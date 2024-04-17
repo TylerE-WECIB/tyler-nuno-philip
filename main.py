@@ -1,4 +1,5 @@
 # The Questions, PythonQuestions, and CtiQuestions classes and the question objects were created by Philip Thomas
+import random
 class Questions:
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         self.question_id = question_id  # question_id is used to prevent repeats of questions
@@ -174,3 +175,17 @@ question_25 = CtiQuestions("25",
                            "Destination MAC Address")
 
 question_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10, question_11, question_12, question_13, question_14, question_15, question_16, question_17, question_18, question_19, question_20, question_21, question_22, question_23, question_24, question_25]
+
+random.shuffle(question_list)
+for question in range(len(question_list)):
+    active_question = question_list[question]
+    answer_list = [active_question.answer_1, active_question.answer_2, active_question.answer_3]
+    random.shuffle(answer_list)
+    print(active_question.question_text)
+    for answer in range(len(answer_list)):  # print out the questions
+        print(f"{answer+1}: {answer_list[answer]}")
+    response = input("pick a number ")
+    if answer_list[int(response)-1] == active_question.correct_answer:  # compare the response to
+        print("correct!")
+    else:
+        print("wrong!")
