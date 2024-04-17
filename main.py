@@ -1,46 +1,40 @@
 import keyboard
 import os
 import art_dimension
+from time import sleep
 
 
 def title(): # title screen code
     
-    selections = "> Start\\n  Help"  
-    
-    
-    while True: # constantly checks for keyboard interaction and changes variables accordingly
-        title_screen = f"""  _________                                  .__ 
- /   _____/____    _____  __ ______________  |__|
- \\_____  \\\\__  \\  /     \\|  |  \\_  __ \\__  \\ |  | 
- /        \\/ __ \\|  Y Y  \\  |  /|  | \\// __ \\|  | 
-/_______  (____  /__|_|  /____/ |__|  (____  /__| 
-        \\/     \\/      \\/                  \\/             
-_________            .___         .___                   
-\\_   ___ \\  ____   __| _/____   __| _/______  _  ______  
-/    \\  \\/ /  _ \\ / __ |/ __ \\ / __ |/  _ \\ \\/ \\/ /     \\ 
-\\     \\___(  <_> ) /_/ \\  ___// /_/ (  <_> )     /   |  \\
- \\______  /\\____/\\____ |\\___  >____ |\\____/ \\/\\_/|___|  /
-        \\/            \\/    \\/     \\/                 \\/ 
-
-Duel of Destiny: 
-CTI Ultimate Edition & Knuckles First Strike Second Half Gamma Omicron Tau Upsilon: 
-"Beat the grass and alert the snake", "The swing of a sword cannot cut the mist from the sky" 
-Version 3.12cti
+	selections = "> Start\n  Help\n  Quit"  
+	
+	while True: # constantly checks for keyboard interaction and changes variables accordingly
+		title_screen = f"""
 {selections}
 """
-        print(title_screen)
-        os.system("cls")
-        if keyboard.is_pressed("down"):
-            selections = "  Start\\n> Help"
-            continue
-        if keyboard.is_pressed("up"):
-            selections = "> Start\\n  Help"
-            continue
-        if keyboard.is_pressed("enter") and selections == "> Start\\n  Help":
-           print("gmae has started")
-           break     
-        if keyboard.is_pressed("enter") and selections == "  Start\\n> Help":
-            break
+
+		print(title_screen)
+		sleep(.01)
+		os.system("cls")
+		if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
+			selections = "  Start\n> Help\n  Quit"
+			continue
+		if keyboard.is_pressed("down") and selections == "  Start\n> Help\n  Quit":
+			selections = "  Start\n  Help\n> Quit"
+			continue
+		if keyboard.is_pressed("up") and selections == "  Start\n> Help\n  Quit":
+			selections = "> Start\n  Help\n  Quit"
+			continue
+		if keyboard.is_pressed("up") and selections == "  Start\n  Help\n> Quit":
+			selections = "  Start\n> Help\n  Quit"
+			continue
+		if keyboard.is_pressed("enter") and selections == "> Start\n  Help\n  Quit":
+			game_start()
+			break     
+		if keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
+			break
+		if keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
+			break
 
 
 def game_over(): # screen that shows up after game ends
@@ -60,13 +54,13 @@ game over
             selections = "  Once Again          > Quit"
             continue
         if keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
-           print("new gmae has started")
+           game_start()
            break     
         if keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
-            break
+           break
 
 
-def character_select(): # where you name your character
+def character_select(): # where player names their character
 	global player1_name
 	global player2_name
 	print(art_dimension.p1_portrait)
@@ -75,3 +69,16 @@ def character_select(): # where you name your character
 	print(art_dimension.p2_portrait)
 	player2_name = input("Name: ")
 
+
+def game_start():
+	p1_health = 100
+	p2_health = 100
+	while p1_health > 0 and p2_health > 0:
+		pass
+
+
+
+def main():
+	pass
+        
+title()
