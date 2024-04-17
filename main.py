@@ -197,7 +197,7 @@ def title(): # title screen code
 
         print(title_screen)
         os.system("cls")
-        time.sleep(.1)
+        time.sleep(.01)
         if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
             selections = "  Start\n> Help\n  Quit"
             continue
@@ -276,6 +276,7 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
             answers_list = [question_list[counter].answer_1, question_list[counter].answer_2, question_list[counter].answer_3]
             correct_index = answers_list.index(question_list[counter].correct_answer)  # finds the position of the correct answer
             end = time.time()
+            time.sleep(.01)
             if keyboard.is_pressed(p1_keys[correct_index]):
                 print(player1_name, "wins")
                 p2_health -= 20
