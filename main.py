@@ -10,11 +10,11 @@ def title(): # title screen code
 	
 	while True: # constantly checks for keyboard interaction and changes variables accordingly
 		title_screen = f"""
-{selections}
+{art_dimension.draw_title(selections)}
 """
 
 		print(title_screen)
-		time.sleep(.01)
+		time.sleep(1)
 		os.system("cls")
 		if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
 			selections = "  Start\n> Help\n  Quit"
@@ -80,7 +80,7 @@ def game():
 		start = time.time()
 		while end - start > 20.0:
 			end = time.time()
-			
+
 
 
 
