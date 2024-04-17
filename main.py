@@ -211,7 +211,6 @@ def title(): # title screen code
             selections = "  Start\n> Help\n  Quit"
             continue
         elif keyboard.is_pressed("enter") and selections == "> Start\n  Help\n  Quit":
-            time.sleep(2)
             character_select()
             break
         elif keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
