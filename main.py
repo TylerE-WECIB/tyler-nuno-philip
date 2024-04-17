@@ -275,8 +275,6 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
             print(art_dimension.draw_question(question_list[counter].question_id, question_list[counter].question_text, question_list[counter].answer_1, question_list[counter].answer_2, question_list[counter].answer_3))
             answers_list = [question_list[counter].answer_1, question_list[counter].answer_2, question_list[counter].answer_3]
             correct_index = answers_list.index(question_list[counter].correct_answer)  # finds the position of the correct answer
-            print(correct_index)
-            print(p1_keys[correct_index])
             end = time.time()
             if keyboard.is_pressed(p1_keys[correct_index]):
                 print(player1_name, "wins")
@@ -293,6 +291,7 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
             os.system("cls")
         counter += 1
         time.sleep(1)
+    game_over()
 
 
 def main():
