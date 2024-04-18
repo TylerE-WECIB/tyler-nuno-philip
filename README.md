@@ -4,13 +4,15 @@ Required Files: main.py, art_dimension.py
 
 Required Modules: keyboard, OS, random, time
 
-Run main.py to play the game
+Run main.py in the command line to play the game
 
 How to Play:
   - 2 players are required to play the game
   - The game will prompt both players with a multiple choice question with 3 possible answers
-  - The first player to correctly answer the question within the time limit will win the point (think Jeopardy)
-  - Winning points deals damage to your opponent
+  - The first player to correctly answer the question within the time limit will win the rounds (think Jeopardy)
+  - Winning rounds deals damage to your opponent
+  - Answering incorrectly causes you to take damage
+  - If neither players answer, both players take damage
   - The game ends when one player is reduced to 0 hp
   - All questions are multiple choice with three possile answers
   - Player 1 answers questions with the A, S, & D keys
