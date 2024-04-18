@@ -172,11 +172,11 @@ Version 3.12cti                                                     |_- --|     
 # ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║
 
 def draw_question(question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
-    if len(question_text) > 78:
-        if question_text[78] != " ":
-            question_text = f"{question_text[1:78]}-\n{question_text[78:]}"
+    if len(question_text) > 90:
+        if question_text[90] != " ":
+            question_text = f"{question_text[0:90]}-    ║\n║ {question_text[90:]}"
         else:
-            question_text = f"{question_text[1:78]}\n{question_text[78:]}"
+            question_text = f"{question_text[0:90]}     ║\n║ {question_text[90:]}"
     return f"""║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║
 ║  Question {str(question_id)}: {str(question_text)+(" "*(97-len(str(question_id)+str(question_text))))}║
 ║                                                                                                              ║
