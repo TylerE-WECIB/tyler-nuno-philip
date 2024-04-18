@@ -6,6 +6,13 @@ import random
 
 global p1_health
 global p2_health
+global player1_name
+global player2_name
+
+player1_name = ""
+player2_name = ""
+p1_health = 50
+p2_health = 50
 
 
 class Questions:
@@ -15,8 +22,7 @@ class Questions:
         self.answer_1 = answer_1  # answer_1 is a possible answer to the question
         self.answer_2 = answer_2  # answer_2 is a possible answer to the question
         self.answer_3 = answer_3  # answer_3 is a possible answer to the question
-        self.correct_answer = correct_answer  # correct_answer is the correct answer to the question, is equal to one
-        # of the answer arguments
+        self.correct_answer = correct_answer  # correct_answer is the correct answer to the question, is equal to one of the answer arguments
         self.question_subject = None  # question_subject stores the question's subject
 
 
@@ -33,8 +39,7 @@ class CtiQuestions(Questions):
 
 
 question_1 = CtiQuestions("01",
-                          "Which Data Link Sublayer communicates between networking software at the upper layers and "
-                          "device hardware at the lower layers",
+                          "Which Data Link Sublayer communicates between networking software at the upper layers and device hardware at the lower layers",
                           "MAC Sublayer",
                           "LLC Sublayer",
                           "ARP Sublayer",
@@ -82,8 +87,7 @@ question_8 = PythonQuestions("08",
                              "The genus of constricting snakes",
                              "Monty Python's Flying Circus")
 question_9 = CtiQuestions("09",
-                          "The Institute of Electrical and Electronics Engineers is the main organization responsible "
-                          "for the creation of what?",
+                          "The Institute of Electrical and Electronics Engineers is the main organization responsible for the creation of what?",
                           "Wireless technical standards",
                           "Wired technical standards",
                           "LAN devices",
@@ -95,15 +99,13 @@ question_10 = CtiQuestions("10",
                            "printers",
                            "printers")
 question_11 = CtiQuestions("11",
-                           "Which of the following OSI model layers is NOT a part of the Network interface layer of "
-                           "the TCP/IP model?",
+                           "Which of the following OSI model layers is NOT a part of the Network interface layer of the TCP/IP model?",
                            "Network Layer",
                            "Datalink Layer",
                            "Physical Layer",
                            "Network Layer")
 question_12 = CtiQuestions("12",
-                           "In what order are messages sent between a host and a DHCP server so that the host can "
-                           "acquire an IPv4 Address?",
+                           "In what order are messages sent between a host and a DHCP server so that the host can acquire an IPv4 Address?",
                            "DHCPDISCOVER -> DHCPOFFER -> DHCPREQUEST -> DHCPACK",
                            "DHCPDISCOVER -> DHCPREQUEST -> DHCPOFFER -> DHCPACK",
                            "DHCPDISCOVER -> DHCPACK -> DHCPREQUEST -> DHCPOFFER",
@@ -195,16 +197,17 @@ question_list = [question_1, question_2, question_3, question_4, question_5, que
 random.shuffle(question_list)
 
 
-def title():  # title screen code
+def title():  # title screen code Nuno
     selections = "> Start\n  Help\n  Quit"
+    os.system("cls")
     while True:  # constantly checks for keyboard interaction and changes variables accordingly
         title_screen = f"""
 {art_dimension.draw_title(selections)}
 """
 
         print(title_screen)
-        os.system("cls")
-        time.sleep(.01)
+        print('\033[100A\033[2K', end='')
+        time.sleep(.1)
         if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
             selections = "  Start\n> Help\n  Quit"
             continue
@@ -223,27 +226,35 @@ def title():  # title screen code
         elif keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
             break
         elif keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
+            os.system("cls")
+            print("Thank you for playing")
             exit()
 
 
-def game_over():  # screen that shows up after game ends
+def game_over():  # screen that shows up after game ends Nuno
+    os.system("cls")
+    global p1_health
+    global p2_health
+    global player1_name
+    global player2_name
     selections = "> Once Again            Quit"
-    game_over_screen = ""
-    if p1_health < 0:
-        game_over_screen = f"""
-player 2 has won
-{selections}
+    winner = "None"
+
+    if p1_health <= 0:
+        winner = f"""
+{player2_name} has won
+{art_dimension.p2_portrait}
+"""
+    elif p2_health <= 0:
+        winner = f"""
+{player1_name} has won
+{art_dimension.p1_portrait}
 """
 
-
-    elif p2_health < 0:
-        game_over_screen = f"""
-player 1 has won
-{selections}
-"""
-    while True:
+    while True:  # constantly checks for keyboard interaction and changes variables accordingly
+        game_over_screen = f"{winner}\n{selections}"
         print(game_over_screen)
-        os.system("cls")
+        print('\033[100A\033[2K', end='')
         if keyboard.is_pressed("left"):
             selections = "> Once Again            Quit"
             continue
@@ -251,29 +262,38 @@ player 1 has won
             selections = "  Once Again          > Quit"
             continue
         elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
-            character_select()
+            os.system("cls")
+            main()
             break
         elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
+            os.system("cls")
+            print("Thank you for playing")
             exit()
 
 
-def character_select():  # where player names their character
+def character_select():  # where player names their character Nuno
     input()
-    print(art_dimension.p1_portrait)
-    player1_name = input("Name: ")
+    global player1_name
+    global player2_name
+    player1_name = ""  # resetting
+    player2_name = ""
     os.system("cls")
-    print(art_dimension.p2_portrait)
-    player2_name = input("Name: ")
+    while player1_name == "":  # makes sure player 1 name is inputted
+        print(art_dimension.p1_portrait)
+        player1_name = input("Name: ")
+        os.system("cls")
+    while player2_name == "":  # makes sure player 2 name is inputted
+        print(art_dimension.p2_portrait)
+        player2_name = input("Name: ")
     game(player1_name, player2_name)
 
 
-def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of the graphics and the quiz feature
+def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of the graphics and the quiz feature Nuno
+    os.system("cls")
     global p1_health
     global p2_health
     player1_name = p1_name
     player2_name = p2_name
-    p1_health = 100
-    p2_health = 100
     p1_keys = ["a", "s", "d"]
     p2_keys = ["j", "k", "l"]
     counter = 0  # iterates through question list
@@ -289,33 +309,44 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
                 question_list[counter].correct_answer)  # finds the position of the correct answer
             end = time.time()
             time.sleep(.01)
-            if keyboard.is_pressed(p1_keys[correct_index]):
-                print(player1_name, "is correct!")
-                p2_health -= 20
+            if keyboard.is_pressed(p1_keys[correct_index]):  # checks if player 1 clicked the right button
+                print(player1_name, "wins")
+                p2_health -= 5
                 break
-            elif keyboard.is_pressed(p2_keys[correct_index]):
-                print(player2_name, "is correct!")
-                p1_health -= 20
+            elif keyboard.is_pressed(p2_keys[correct_index]):  # checks if player 2 clicked the right button
+                print(player2_name, "wins")
+                p1_health -= 5
                 break
-            elif keyboard.is_pressed(p1_keys[not correct_index]):  # HOW DID THIS WORK!? - Philip
+            elif keyboard.is_pressed(p1_keys[not correct_index]):
                 print(f"{player1_name} is incorrect!")
                 p1_health -= 20
+                break
             elif keyboard.is_pressed(p2_keys[not correct_index]):
                 print(f"{player2_name} is incorrect!")
                 p2_health -= 20
-            elif end - start > 20.0:
-                print("The timer has expired, both players take damage.")
-                p1_health -= 20
-                p2_health -= 20
                 break
-            os.system("cls")
+            elif end - start > 20.0:  # times out
+                p1_health -= 5
+                p2_health -= 5
+                break
+            print('\033[100A\033[2K', end='')
         counter += 1
         time.sleep(1)
+        os.system("cls")
     game_over()
 
 
 def main():
+    global p1_health
+    global p2_health
+    p1_health = 50
+    p2_health = 50
     title()  # title calls the function that starts the game
 
 
-main()
+try:
+    main()
+except KeyboardInterrupt:
+    os.system("cls")
+    print("Goodbye")
+    exit()
