@@ -285,8 +285,6 @@ Draw
             exit()
 
 
-
-
 def character_select():  # where player names their character Nuno
     global player1_name
     global player2_name
@@ -363,8 +361,6 @@ def game():  # the actual gameplay loop includes the printing of the graphics an
 
         counter += 1
     game_over()
-
-
 
 
 def main():
