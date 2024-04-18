@@ -234,7 +234,12 @@ def title(): # title screen code Nuno
            character_select()
            break
        elif keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
-           break
+           os.system("cls")
+           with open("README.md", "r") as help_file:
+               help_file.read()
+           keyboard.wait("enter")
+           os.system("cls")
+           continue
        elif keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
            os.system("cls")
            print("Thank you for playing")
@@ -275,7 +280,7 @@ def game_over():  # screen that shows up after game ends Nuno
             continue
         elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
             os.system("cls")
-            character_select()
+            main()
             break
         elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
             os.system("cls")
