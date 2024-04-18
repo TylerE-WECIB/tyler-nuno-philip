@@ -247,6 +247,8 @@ def game_over():  # screen that shows up after game ends Nuno
     os.system("cls")
     global p1_health
     global p2_health
+    global player1_name
+    global player2_name
     selections = "> Once Again            Quit"
     winner = "None"
 	
@@ -272,6 +274,7 @@ def game_over():  # screen that shows up after game ends Nuno
             selections = "  Once Again          > Quit"
             continue
         elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
+            os.system("cls")
             character_select()
             break
         elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
@@ -281,14 +284,17 @@ def game_over():  # screen that shows up after game ends Nuno
 
 
 def character_select():  # where player names their character Nuno
+   input()
    global player1_name
    global player2_name
+   player1_name = ""  # resetting
+   player2_name = ""
    os.system("cls")
-   while player1_name == "":
+   while player1_name == "":  # makes sure player 1 name is inputted
     print(art_dimension.p1_portrait)
     player1_name = input("Name: ")
     os.system("cls")
-   while player2_name == "":
+   while player2_name == "":  # makes sure player 2 name is inputted
     print(art_dimension.p2_portrait)
     player2_name = input("Name: ")
    game(player1_name, player2_name)
@@ -319,6 +325,14 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
                print(player2_name, "wins")
                p1_health -= 5
                break
+           elif keyboard.is_pressed(p1_keys[not correct_index]):
+                print(f"{player1_name} is incorrect!")
+                p1_health -= 20
+                break
+           elif keyboard.is_pressed(p2_keys[not correct_index]):
+                print(f"{player2_name} is incorrect!")
+                p2_health -= 20
+                break
            elif end - start > 20.0:  # times out
                p1_health -= 5
                p2_health -= 5
@@ -331,11 +345,16 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
 
 
 def main():
+   global p1_health
+   global p2_health
+   p1_health = 50
+   p2_health = 50
    title()  # title calls the function that starts the game
 
 
 try:
     main()
 except KeyboardInterrupt:
+    os.system("cls")
     print("Goodbye")
     exit()
