@@ -5,11 +5,10 @@ import time
 import random
 
 
-
-
 global p1_health
 global p2_health
-
+p1_health = 50
+p2_health = 50
 
 
 
@@ -232,47 +231,46 @@ def title(): # title screen code
        elif keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
            break
        elif keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
+           os.system("cls")
            exit()
 
 
 
 
-def game_over(p1_hp, p2_hp):  # screen that shows up after game ends
-	p1_health = p1_hp
-	p2_health = p2_hp
-	selections = "> Once Again            Quit"
-	game_over_screen = ""
+def game_over():  # screen that shows up after game ends
+    global p1_health
+    global p2_health
+    selections = "> Once Again            Quit"
+    winner = "None"
 	
-	if p1_health < 0:
-		game_over_screen = f"""
-player 2 has won
-{selections}
-"""
-	elif p2_health < 0:
-		game_over_screen = f"""
-player 1 has won
-{selections}
-"""
-	while True:
-		print(game_over_screen)
-		print('\033[100A\033[2K',end='')
-		if keyboard.is_pressed("left"):
-			selections = "> Once Again            Quit"
-			continue
-		elif keyboard.is_pressed("right"):
-			selections = "  Once Again          > Quit"
-			continue
-		elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
-			character_select()
-			break
-		elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
-			exit()
+    if p1_health <= 0:
+        winner = f"player 2 has won"
+    elif p2_health <= 0:
+        winner = f"player 1 has won"
+    
+    while True:
+        os.system("cls")
+        game_over_screen = f"{winner}\n{selections}"
+        print(game_over_screen)
+        print('\033[100A\033[2K',end='')
+        if keyboard.is_pressed("left"):
+            selections = "> Once Again            Quit"
+            continue
+        elif keyboard.is_pressed("right"):
+            selections = "  Once Again          > Quit"
+            continue
+        elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
+            character_select()
+            break
+        elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
+            exit()
 
 
 
 
 def character_select():  # where player names their character
    input()
+   os.system("cls")
    print(art_dimension.p1_portrait)
    player1_name = input("Name: ")
    os.system("cls")
@@ -284,12 +282,11 @@ def character_select():  # where player names their character
 
 
 def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of the graphics and the quiz feature
+   os.system("cls")
    global p1_health
    global p2_health
    player1_name = p1_name
    player2_name = p2_name
-   p1_health = 100
-   p2_health = 100
    p1_keys = ["a", "s", "d"]
    p2_keys = ["j", "k", "l"]
    counter = 0  # iterates through question list
@@ -303,20 +300,21 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
            time.sleep(.01)
            if keyboard.is_pressed(p1_keys[correct_index]):  # checks if player 1 clicked the right button
                print(player1_name, "wins")
-               p2_health -= 20
+               p2_health -= 5
                break
            elif keyboard.is_pressed(p2_keys[correct_index]):  # checks if player 2 clicked the right button
                print(player2_name, "wins")
-               p1_health -= 20
+               p1_health -= 5
                break
            elif end - start > 20.0:  # times out
-               p1_health -= 20
-               p2_health -= 20
+               p1_health -= 5
+               p2_health -= 5
                break
-           os.system("cls")
+           print('\033[100A\033[2K',end='')
        counter += 1
        time.sleep(1)
-   game_over(p1_health, p2_health)
+       os.system("cls")
+   game_over()
 
 
 
@@ -326,5 +324,4 @@ def main():
 
 
 
-
-game_over()
+main()
