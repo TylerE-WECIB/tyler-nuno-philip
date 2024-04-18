@@ -1,5 +1,13 @@
-# The Questions, PythonQuestions, and CtiQuestions classes and the question objects were created by Philip Thomas
+import keyboard
+import os
+import art_dimension
+import time
 import random
+
+global p1_health
+global p2_health
+
+
 class Questions:
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         self.question_id = question_id  # question_id is used to prevent repeats of questions
@@ -174,18 +182,135 @@ question_25 = CtiQuestions("25",
                            "Source MAC Address",
                            "Destination MAC Address")
 
-question_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10, question_11, question_12, question_13, question_14, question_15, question_16, question_17, question_18, question_19, question_20, question_21, question_22, question_23, question_24, question_25]
+question_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8,
+                 question_9, question_10, question_11, question_12, question_13, question_14, question_15, question_16,
+                 question_17, question_18, question_19, question_20, question_21, question_22, question_23, question_24,
+                 question_25]
 
 random.shuffle(question_list)
-for question in range(len(question_list)):
-    active_question = question_list[question]
-    answer_list = [active_question.answer_1, active_question.answer_2, active_question.answer_3]
-    random.shuffle(answer_list)
-    print(active_question.question_text)
-    for answer in range(len(answer_list)):  # print out the questions
-        print(f"{answer+1}: {answer_list[answer]}")
-    response = input("pick a number ")
-    if answer_list[int(response)-1] == active_question.correct_answer:  # compare the response to
-        print("correct!")
-    else:
-        print("wrong!")
+
+
+def title():  # title screen code
+    selections = "> Start\n  Help\n  Quit"
+    while True:  # constantly checks for keyboard interaction and changes variables accordingly
+        title_screen = f"""
+{art_dimension.draw_title(selections)}
+"""
+
+        print(title_screen)
+        os.system("cls")
+        time.sleep(.01)
+        if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
+            selections = "  Start\n> Help\n  Quit"
+            continue
+        elif keyboard.is_pressed("down") and selections == "  Start\n> Help\n  Quit":
+            selections = "  Start\n  Help\n> Quit"
+            continue
+        elif keyboard.is_pressed("up") and selections == "  Start\n> Help\n  Quit":
+            selections = "> Start\n  Help\n  Quit"
+            continue
+        elif keyboard.is_pressed("up") and selections == "  Start\n  Help\n> Quit":
+            selections = "  Start\n> Help\n  Quit"
+            continue
+        elif keyboard.is_pressed("enter") and selections == "> Start\n  Help\n  Quit":
+            character_select()
+            break
+        elif keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
+            break
+        elif keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
+            exit()
+
+
+def game_over():  # screen that shows up after game ends
+    selections = "> Once Again            Quit"
+    game_over_screen = ""
+    if p1_health < 0:
+        game_over_screen = f"""
+player 2 has won
+{selections}
+"""
+
+
+    elif p2_health < 0:
+        game_over_screen = f"""
+player 1 has won
+{selections}
+"""
+    while True:
+        print(game_over_screen)
+        os.system("cls")
+        if keyboard.is_pressed("left"):
+            selections = "> Once Again            Quit"
+            continue
+        elif keyboard.is_pressed("right"):
+            selections = "  Once Again          > Quit"
+            continue
+        elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
+            character_select()
+            break
+        elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
+            exit()
+
+
+def character_select():  # where player names their character
+    input()
+    print(art_dimension.p1_portrait)
+    player1_name = input("Name: ")
+    os.system("cls")
+    print(art_dimension.p2_portrait)
+    player2_name = input("Name: ")
+    game(player1_name, player2_name)
+
+
+def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of the graphics and the quiz feature
+    global p1_health
+    global p2_health
+    player1_name = p1_name
+    player2_name = p2_name
+    p1_health = 100
+    p2_health = 100
+    p1_keys = ["a", "s", "d"]
+    p2_keys = ["j", "k", "l"]
+    counter = 0  # iterates through question list
+    while p1_health > 0 and p2_health > 0:  # the game keeps going as long as both players have hp
+        start = time.time()
+        while True:
+            print(art_dimension.draw_question(question_list[counter].question_id, question_list[counter].question_text,
+                                              question_list[counter].answer_1, question_list[counter].answer_2,
+                                              question_list[counter].answer_3))
+            answers_list = [question_list[counter].answer_1, question_list[counter].answer_2,
+                            question_list[counter].answer_3]
+            correct_index = answers_list.index(
+                question_list[counter].correct_answer)  # finds the position of the correct answer
+            end = time.time()
+            time.sleep(.01)
+            if keyboard.is_pressed(p1_keys[correct_index]):
+                print(player1_name, "is correct!")
+                p2_health -= 20
+                break
+            elif keyboard.is_pressed(p2_keys[correct_index]):
+                print(player2_name, "is correct!")
+                p1_health -= 20
+                break
+            elif keyboard.is_pressed(p1_keys[not correct_index]):
+                print(f"{player1_name} is incorrect!")
+                p1_health -= 20
+            elif keyboard.is_pressed(p2_keys[not correct_index]):
+                print(f"{player2_name} is incorrect!")
+                p2_health -= 20
+            elif end - start > 20.0:
+                print("The timer has expired, both players take damage.")
+                p1_health -= 20
+                p2_health -= 20
+                break
+            os.system("cls")
+        counter += 1
+        time.sleep(1)
+    game_over()
+
+
+def main():
+    title()  # title calls the function that starts the game
+
+
+main()
