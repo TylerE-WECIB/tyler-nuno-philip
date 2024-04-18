@@ -9,12 +9,15 @@ global p1_health
 global p2_health
 global player1_name
 global player2_name
+global help_file
 
 player1_name = ""
 player2_name = ""
 p1_health = 50
 p2_health = 50
 
+with open("README.md", "r") as help_file:
+    help_file = help_file.read()
 
 
 class Questions:
@@ -207,6 +210,7 @@ random.shuffle(question_list)
 
 
 def title(): # title screen code Nuno
+
    selections = "> Start\n  Help\n  Quit"
    os.system("cls")
    while True: # constantly checks for keyboard interaction and changes variables accordingly
@@ -231,15 +235,15 @@ def title(): # title screen code Nuno
            selections = "  Start\n> Help\n  Quit"
            continue
        elif keyboard.is_pressed("enter") and selections == "> Start\n  Help\n  Quit":
+           os.system("cls")
            character_select()
            break
        elif keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
            os.system("cls")
-           with open("README.md", "r") as help_file:
-               help_file.read()
+           print(help_file)
            keyboard.wait("enter")
            os.system("cls")
-           continue
+           main()
        elif keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
            os.system("cls")
            print("Thank you for playing")
@@ -294,7 +298,6 @@ def character_select():  # where player names their character Nuno
    global player2_name
    player1_name = ""  # resetting
    player2_name = ""
-   os.system("cls")
    while player1_name == "":  # makes sure player 1 name is inputted
     print(art_dimension.p1_portrait)
     player1_name = input("Name: ")
