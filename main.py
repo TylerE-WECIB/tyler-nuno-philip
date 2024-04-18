@@ -15,7 +15,8 @@ class Questions:
         self.answer_1 = answer_1  # answer_1 is a possible answer to the question
         self.answer_2 = answer_2  # answer_2 is a possible answer to the question
         self.answer_3 = answer_3  # answer_3 is a possible answer to the question
-        self.correct_answer = correct_answer  # correct_answer is the correct answer to the question, is equal to one of the answer arguments
+        self.correct_answer = correct_answer  # correct_answer is the correct answer to the question, is equal to one
+        # of the answer arguments
         self.question_subject = None  # question_subject stores the question's subject
 
 
@@ -32,7 +33,8 @@ class CtiQuestions(Questions):
 
 
 question_1 = CtiQuestions("01",
-                          "Which Data Link Sublayer communicates between networking software at the upper layers and device hardware at the lower layers",
+                          "Which Data Link Sublayer communicates between networking software at the upper layers and "
+                          "device hardware at the lower layers",
                           "MAC Sublayer",
                           "LLC Sublayer",
                           "ARP Sublayer",
@@ -80,7 +82,8 @@ question_8 = PythonQuestions("08",
                              "The genus of constricting snakes",
                              "Monty Python's Flying Circus")
 question_9 = CtiQuestions("09",
-                          "The Institute of Electrical and Electronics Engineers is the main organization responsible for the creation of what?",
+                          "The Institute of Electrical and Electronics Engineers is the main organization responsible "
+                          "for the creation of what?",
                           "Wireless technical standards",
                           "Wired technical standards",
                           "LAN devices",
@@ -92,13 +95,15 @@ question_10 = CtiQuestions("10",
                            "printers",
                            "printers")
 question_11 = CtiQuestions("11",
-                           "Which of the following OSI model layers is NOT a part of the Network interface layer of the TCP/IP model?",
+                           "Which of the following OSI model layers is NOT a part of the Network interface layer of "
+                           "the TCP/IP model?",
                            "Network Layer",
                            "Datalink Layer",
                            "Physical Layer",
                            "Network Layer")
 question_12 = CtiQuestions("12",
-                           "In what order are messages sent between a host and a DHCP server so that the host can acquire an IPv4 Address?",
+                           "In what order are messages sent between a host and a DHCP server so that the host can "
+                           "acquire an IPv4 Address?",
                            "DHCPDISCOVER -> DHCPOFFER -> DHCPREQUEST -> DHCPACK",
                            "DHCPDISCOVER -> DHCPREQUEST -> DHCPOFFER -> DHCPACK",
                            "DHCPDISCOVER -> DHCPACK -> DHCPREQUEST -> DHCPOFFER",
