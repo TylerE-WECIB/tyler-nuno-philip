@@ -1,6 +1,17 @@
 # tyler-nuno-philip
-hey guys. tyler here
-Gameplay Flowchart Link: https://shorturl.at/hyzCE
-Title: Samurai Codedown: Duel of Destiny: CTI Ultimate Edition First Strike Second Half Gamma Omicron Tau Upsilon: "Beat the grass and alert the snake", "The swing of a sword cannot cut the mist from the sky" Version 3.12cti
-Prototype question code format (questions coded as dictionaries): question_prototype = {"question_text": "What color is the sky?", "answer_1": "red", "answer_2": "blue", "answer_three": "green", "correct_answer": "2" "question_id": 0001}
-The question_id of used questions are added to a list, when selecting a new question, the game will check that list for the new question's question_id, only using the new question if the question_id is not found.
+
+Required Files: main.py, art_dimension.py
+
+Required Modules: keyboard, OS, random, time
+
+Run main.py to play the game
+
+How to Play:
+  - 2 players are required to play the game
+  - The game will prompt both players with a multiple choice question with 3 possible answers
+  - The first player to correctly answer the question within the time limit will win the point (think Jeopardy)
+  - Winning points deals damage to your opponent
+  - The game ends when one player is reduced to 0 hp
+  - All questions are multiple choice with three possile answers
+  - Player 1 answers questions with the A, S, & D keys
+  - Player 2 answers questions with the J, K, & L keys
