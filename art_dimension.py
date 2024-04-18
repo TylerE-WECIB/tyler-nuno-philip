@@ -2,7 +2,7 @@ import os
 import time
 
 # all art here is drawn by tyler manually :)
-# all code here is also from tyler
+# all code here is also from tyler except part of the draw_question() function that was updated by nuno
 
 p1_portrait = """PLAYER 1
 ╔════════════════════════════════╗
@@ -152,6 +152,11 @@ Version 3.12cti                                                     |_- --|     
 
 
 def draw_question(question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
+    if len(question_text) > 90:
+        if question_text[90] != " ":
+            question_text = f"{question_text[0:90]}-    ║\n║  {question_text[90:]}"
+        else:
+            question_text = f"{question_text[0:90]}     ║\n║ {question_text[90:]}"
     return f"""║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║
 ║  Question {str(question_id)}: {str(question_text)+(" "*(97-len(str(question_id)+str(question_text))))}║
 ║                                                                                                              ║
@@ -159,7 +164,6 @@ def draw_question(question_id=1, question_text="", answer_1="", answer_2="", ans
 ║  S/K: {str(answer_2)+(" "*(103-len(str(answer_2))))}║
 ║  D/L: {str(answer_3)+(" "*(103-len(str(answer_3))))}║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝"""
-
 # ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║
 # ║  Question 1: The quick brown fox jumps over the lazy dog but also the dog is the wolf guy from NC State?     ║
 # ║                                                                                                              ║
@@ -173,24 +177,24 @@ def draw_question(question_id=1, question_text="", answer_1="", answer_2="", ans
 # ║  P1 NAME                                                                                            P2 NAME  ║
 # ║  ▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐ [20] ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌  ║
 # ║                                                                                                              ║
-# ║  neutral state                                                                                               ║
 # ║                                                                                                              ║
 # ║                                                                                                              ║
 # ║                                                                                                              ║
-# ║         _.                                                                                                   ║
-# ║     /     |                                                                                                  ║
-# ║   -________\                                                                                                 ║
-# ║   | .\  /.|___                                                         other guy lol                         ║
-# ║    \__-_ /     ---                                                                                           ║
-# ║        /_          \ ---------|                                                                              ║
-# ║   \---      /        \-------|                                                                               ║
-# ║  ___\ _____            \___                                                                                  ║
-# ║ |______     \----------   /                                                                                  ║
-# ║          /            \    \                                                                                 ║
-# ║     /___|                \___\                                                                               ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
+# ║                                                                                                              ║
 # ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║
 
-def draw_health(p1_name, p1_health, p2_name, p2_health,timer):
+def draw_health(p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50,timer=20):
     timer = str(int(timer))
     if len(timer) < 2:
         timer = "0" + timer
@@ -424,6 +428,94 @@ anim_frames = {"blank":"""║                                                   
 ║   |-----/---------------------------/---->                        /_____\\____________/_|________|_/_____\\    ║
 ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║"""}
 
-print(draw_health("goku",50,"vegeta",50,"10"))
-print(anim_frames["final"])
-print(draw_question())
+#debug lines
+# print(draw_health("goku",50,"vegeta",50,"10"))
+# print(anim_frames["final"])
+# print(draw_question())
+
+
+def draw_gameplay(clear=True, scene = "neutral", p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50, timer=20, question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
+    if clear:
+        os.system('cls')
+    global anim_frames
+    return f"{draw_health(p1_name, p1_health, p2_name, p2_health, timer)}\n{anim_frames[scene]}\n{draw_question(question_id, question_text, answer_1, answer_2, answer_3)}"
+
+
+def animate_slash(winner = "draw", p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50, timer=20,  question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
+    print(draw_gameplay(True, "neutral", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep(1)
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "neutral", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1/12))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "dash1", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "blank", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12 * 3))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "slash1", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "slash2", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "slash3", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "slash4", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "blank", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12 * 3))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "dash2", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12))
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "final", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep(1)
+    print('\033[30A\033[2K', end='')
+
+    if winner == "player_1":
+        for times in range(3):
+            print("\n"+draw_gameplay(False, "p1_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+            time.sleep((1/12))
+            print('\033[30A\033[2K', end='')
+            print(draw_gameplay(False, "p1_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3)+f"\n{" "*112}")
+            time.sleep((1/12))
+            print('\033[30A\033[2K', end='')
+        time.sleep(2)
+
+    elif winner == "player_2":
+        for times in range(3):
+            print("\n" + draw_gameplay(False, "p2_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+            time.sleep((1 / 12))
+            print('\033[30A\033[2K', end='')
+            print(draw_gameplay(False, "p2_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3) + f"\n{" " * 112}")
+            time.sleep((1 / 12))
+            print('\033[30A\033[2K', end='')
+        time.sleep(2)
+    else:
+        for times in range(3):
+            print("\n"+draw_gameplay(False, "draw", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+            time.sleep((1/12))
+            print('\033[30A\033[2K', end='')
+            print(draw_gameplay(False, "draw", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3)+f"\n{" "*112}")
+            time.sleep((1/12))
+            print('\033[30A\033[2K', end='')
+        time.sleep(2)
+
+
+# debug lines
+# animate_slash(winner="player_2")
+# print(draw_gameplay(p1_health=30))
