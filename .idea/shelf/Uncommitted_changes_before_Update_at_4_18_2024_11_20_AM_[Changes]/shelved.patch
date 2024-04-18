@@ -1,0 +1,512 @@
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1713453315594)
++++ b/.idea/.gitignore	(date 1713453315594)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1713453315609)
++++ b/.idea/misc.xml	(date 1713453315609)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1713453315610)
++++ b/.idea/modules.xml	(date 1713453315610)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/tyler-nuno-philip.iml" filepath="$PROJECT_DIR$/.idea/tyler-nuno-philip.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1713453315594)
++++ b/.idea/.name	(date 1713453315594)
+@@ -0,0 +1,1 @@
++main.py
+\ No newline at end of file
+Index: .idea/tyler-nuno-philip.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/tyler-nuno-philip.iml b/.idea/tyler-nuno-philip.iml
+new file mode 100644
+--- /dev/null	(date 1713453315610)
++++ b/.idea/tyler-nuno-philip.iml	(date 1713453315610)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="jdk" jdkName="Python 3.11" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1713453315610)
++++ b/.idea/vcs.xml	(date 1713453315610)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: art_dimension.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import os\r\nimport time\r\n\r\n# all art here is drawn by tyler manually :)\r\n\r\np1_portrait = \"\"\"PLAYER 1\r\n╔════════════════════════════════╗\r\n║           \\\\______              ║\r\n║      _--‾‾       ‾‾-_          ║\r\n║   _-‾            ____\\\\------_  ║\r\n║  /          _-‾‾‾            \\\\ ║\r\n║  |        -‾                  |║\r\n║-_|                            |║\r\n║  |   /   /__                  |║\r\n║   |  |  |   ‾‾-_   \\\\          |║\r\n║   | /|  |   \\\\\\\\  ‾‾-|---\\\\ /\\\\  / ║\r\n║    | | /    0\\\\\\\\     //  |  \\\\/  ║\r\n║_  / \\\\|/             0  |       ║\r\n║ \\\\/    \\\\          _\\\\   /        ║\r\n║   \\\\    \\\\     --_    /          ║\r\n║    ‾--_  \\\\_________/           ║\r\n╚════════════════════════════════╝\"\"\"\r\n\r\n# PLAYER 1\r\n# ╔════════════════════════════════╗\r\n# ║           \\______              ║\r\n# ║      _--‾‾       ‾‾-_          ║\r\n# ║   _-‾            ____\\------_  ║\r\n# ║  /          _-‾‾‾            \\ ║\r\n# ║  |        -‾                  |║\r\n# ║-_|                            |║\r\n# ║  |   /   /__                  |║\r\n# ║   |  |  |   ‾‾-_   \\          |║\r\n# ║   | /|  |   \\\\  ‾‾-|---\\ /\\  / ║\r\n# ║    | | /    0\\\\     //  |  \\/  ║\r\n# ║_  / \\|/             0  |       ║\r\n# ║ \\/    \\          _\\   /        ║\r\n# ║   \\    \\     --_    /          ║\r\n# ║    ‾--_  \\_________/           ║\r\n# ╚════════════════════════════════╝\r\n\r\n\r\n\r\np2_portrait = \"\"\"PLAYER 2\r\n╔════════════════════════════════╗\r\n║                 _-‾ / \\\\        ║\r\n║            __--‾---/-|_\\\\       ║\r\n║      __--‾‾__/    /  |  \\\\      ║\r\n║ __--‾     /  ----/____|  \\\\     ║\r\n║‾  --__  /       /     |‾‾‾\\\\    ║\r\n║-_     / ---___ /      |    \\\\   ║\r\n║  ‾-_/         /‾‾----_|_____\\\\  ║\r\n║     ‾-__     /        |      \\\\ ║\r\n║     | __‾‾--___        |      \\\\║\r\n║    |   0\\\\    __‾‾‾‾---_________║\r\n║    |       ‾ 0     |_/         ║\r\n║    \\\\    /_        /  |         ║\r\n║     \\\\    _--_   /  __-‾‾‾‾--_  ║\r\n║      \\\\________/  /‾          \\\\ ║\r\n╚════════════════════════════════╝\"\"\"\r\n\r\n# PLAYER 2\r\n# ╔════════════════════════════════╗\r\n# ║                 _-‾ / \\        ║\r\n# ║            __--‾---/-|_\\       ║\r\n# ║      __--‾‾__/    /  |  \\      ║\r\n# ║ __--‾     /  ----/____|  \\     ║\r\n# ║‾  --__  /       /     |‾‾‾\\    ║\r\n# ║-_     / ---___ /      |    \\   ║\r\n# ║  ‾-_/         /‾‾----_|_____\\  ║\r\n# ║     ‾-__     /        |      \\ ║\r\n# ║     | __‾‾--___        |      \\║\r\n# ║    |   0\\    __‾‾‾‾---_________║\r\n# ║    |       ‾ 0     |_/         ║\r\n# ║    \\    /_        /  |         ║\r\n# ║     \\    _--_   /  __-‾‾‾‾--_  ║\r\n# ║      \\________/  /‾          \\ ║\r\n# ╚════════════════════════════════╝\r\n\r\n\r\ndef draw_title(selections=\">Play\\nHelp\\nQuit\"):\r\n    return f\"\"\"\r\n_________                                   .__\r\n/   _____/____    _____  __ ______________  |__|                                       _-|_-\r\n\\\\_____  \\\\\\\\__  \\\\  /     \\\\|  |  \\\\_  __ \\\\__  \\\\ |  |                                    /\\\\/    /\r\n/        \\\\/ __ \\\\|  Y Y  \\\\  |  /|  | \\\\// __ \\\\|  |                               _____/     _- \r\n/_______  (____  /__|_|  /____/ |__|  (____  /__|                           _-‾     ‾\\\\--‾‾\r\n        \\\\/     \\\\/      \\\\/                  \\\\/                              /   ______ |\r\n_________            .___         .___                                     |/ /__ __| |\r\n\\\\_   ___ \\\\  ____   __| _/____   __| _/______  _  ______                     |/\\\\0| 0 |/\r\n/    \\\\  \\\\/ /  _ \\\\ / __ |/ __ \\\\ / __ |/  _ \\\\ \\\\/ \\\\/ /     \\\\                     /\\\\ ^ _/\r\n\\\\     \\\\___(  <_> ) /_/ \\\\  ___// /_/ (  <_> )     /   |  \\\\\\\\               ---‾‾  ‾‾‾ -__\r\n \\\\______  /\\\\____/\\\\____ |\\\\___  >____ |\\\\____/ \\\\/\\\\_/|___|  /               /|  | |    / /  ‾|\\\\\r\n        \\\\/            \\\\/    \\\\/     \\\\/                 \\\\/               / |   \\\\ \\\\  / /    | \\\\\r\n                                                                      /  |    \\\\ \\\\/ /    /  |\r\nDuel of Destiny: CTI Ultimate Edition & Knuckles                     |   \\\\     \\\\ \\\\/    /    \\\\\r\nFirst Strike Second Half Gamma Omicron Tau Upsilon:                  |    |     \\\\  \\\\  /      |\r\n\"Beat the grass and alert the snake\",                               /     |______\\\\__\\\\/ \\\\     |  \r\n\"The swing of a sword cannot cut the mist from the sky\"             |  ___|__________|  \\\\     \\\\\r\nVersion 3.12cti                                                     |_- --|           \\\\  \\\\___--\\\\\r\n                                                                    |_-‾ \\\\             \\\\ |____-- /  \r\n©2024 Tyler Ellis, Nuno Ribeiro, Philip Thomas                      v \\\\-‾       /|      \\\\   \\\\__//‾-_\r\n                                                                       |       /  |      |     /‾-_ ‾-_\r\n                                                                       |       |  |      |         ‾-_ ‾-_\r\n                                                                      |        | |       |            ‾-_ ‾-_\r\n                                                                      |        | |       |               ‾-_ ‾-_   \r\n                                                                      |        | |       |                  ‾-_ ‾-_       *\r\n                                                                      /       |  |       |                     ‾-_ ‾---___-/\r\n                                                                     /        |  |        |                       ‾---___-‾  \r\n                                                                     |__     _|  /________\\\\                          \r\n                                                                       |‾‾‾‾|       |   |\r\n                                                                     _-__   |      /     --_\r\n                                                                    =====_-‾       |=====/==|\r\n                                                                    ‾‾‾‾‾\r\n{selections}\"\"\"\r\n\r\n# Title Screen\r\n# _________                                   .__\r\n# /   _____/____    _____  __ ______________  |__|                                       _-|_-\r\n# \\_____  \\\\__  \\  /     \\|  |  \\_  __ \\__  \\ |  |                                    /\\/    /\r\n# /        \\/ __ \\|  Y Y  \\  |  /|  | \\// __ \\|  |                               _____/     _-\r\n# /_______  (____  /__|_|  /____/ |__|  (____  /__|                           _-‾     ‾\\--‾‾\r\n#         \\/     \\/      \\/                  \\/                              /   ______ |\r\n# _________            .___         .___                                     |/ /__ __| |\r\n# \\_   ___ \\  ____   __| _/____   __| _/______  _  ______                     |/\\0| 0 |/\r\n# /    \\  \\/ /  _ \\ / __ |/ __ \\ / __ |/  _ \\ \\/ \\/ /     \\                     /\\ ^ _/\r\n# \\     \\___(  <_> ) /_/ \\  ___// /_/ (  <_> )     /   |  \\\\               ---‾‾  ‾‾‾ -__\r\n#  \\______  /\\____/\\____ |\\___  >____ |\\____/ \\/\\_/|___|  /               /|  | |    / /  ‾|\\\r\n#         \\/            \\/    \\/     \\/                 \\/               / |   \\ \\  / /    | \\\r\n#                                                                       /  |    \\ \\/ /    /  |\r\n# Duel of Destiny: CTI Ultimate Edition & Knuckles                     |   \\     \\ \\/    /    \\\r\n# First Strike Second Half Gamma Omicron Tau Upsilon:                  |    |     \\  \\  /      |\r\n# \"Beat the grass and alert the snake\",                               /     |______\\__\\/ \\     |\r\n# \"The swing of a sword cannot cut the mist from the sky\"             |  ___|__________|  \\     \\\r\n# Version 3.12cti                                                     |_- --|           \\  \\___--\\\r\n#                                                                     |_-‾ \\             \\ |____-- /\r\n# ©2024 Tyler Ellis, Nuno Ribeiro, Philip Thomas                      v \\-‾       /|      \\   \\__//‾-_\r\n#                                                                        |       /  |      |     /‾-_ ‾-_\r\n#                                                                        |       |  |      |         ‾-_ ‾-_\r\n#                                                                       |        | |       |            ‾-_ ‾-_\r\n#                                                                       |        | |       |               ‾-_ ‾-_\r\n#                                                                       |        | |       |                  ‾-_ ‾-_       *\r\n#                                                                       /       |  |       |                     ‾-_ ‾---___-/\r\n#                                                                      /        |  |        |                       ‾---___-‾\r\n#                                                                      |__     _|  /________\\\r\n#                                                                        |‾‾‾‾|       |   |\r\n#                                                                      _-__   |      /     --_\r\n#                                                                     =====_-‾       |=====/==|\r\n#                                                                     ‾‾‾‾‾\r\n# {selections}\r\n\r\n\r\n# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\r\n# ║  P1 NAME                                                                                            P2 NAME  ║\r\n# ║  ▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐ [20] ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌  ║\r\n# ║                                                                                                              ║\r\n# ║                                                                                                              ║\r\n# ║                                                                                                              ║\r\n# ║                                                                                                              ║\r\n# ║                                                                                                              ║\r\n# ║         _.                                                                                                   ║\r\n# ║     /     |                                                                                                  ║\r\n# ║   -________\\                                                                                                 ║\r\n# ║   | .\\  /.|___                                                         other guy lol                         ║\r\n# ║    \\__-_ /     ---                                                                                           ║\r\n# ║        /_          \\ ---------|                                                                              ║\r\n# ║   \\---      /        \\-------|                                                                               ║\r\n# ║  ___\\ _____            \\___                                                                                  ║\r\n# ║ |______     \\----------   /                                                                                  ║\r\n# ║          /            \\    \\                                                                                 ║\r\n# ║     /___|                \\___\\                                                                               ║\r\n# ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║\r\n\r\ndef draw_question(question_id=1, question_text=\"\", answer_1=\"\", answer_2=\"\", answer_3=\"\"):\r\n    return f\"\"\"║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║\r\n║  Question {str(question_id)}: {str(question_text)+(\" \"*(97-len(str(question_id)+str(question_text))))}║\r\n║                                                                                                              ║\r\n║  A/J: {str(answer_1)+(\" \"*(103-len(str(answer_1))))}║\r\n║  S/K: {str(answer_2)+(\" \"*(103-len(str(answer_2))))}║\r\n║  D/L: {str(answer_3)+(\" \"*(103-len(str(answer_3))))}║\r\n╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\"\"\"\r\n\r\n# ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║\r\n# ║  Question 1: The quick brown fox jumps over the lazy dog but also the dog is the wolf guy from NC State?     ║\r\n# ║                                                                                                              ║\r\n# ║  A/J: Goku                                                                                                   ║\r\n# ║  S/K: Vegeta                                                                                                 ║\r\n# ║  D/L: Trunks                                                                                                 ║\r\n# ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/art_dimension.py b/art_dimension.py
+--- a/art_dimension.py	(revision 76f906d7b76bf88c01e1b92f17df6bdf078ad2da)
++++ b/art_dimension.py	(date 1713453315627)
+@@ -172,6 +172,11 @@
+ # ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║
+ 
+ def draw_question(question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
++    if len(question_text) > 90:
++        if question_text[90] != " ":
++            question_text = f"{question_text[0:90]}-    ║\n║ {question_text[90:]}"
++        else:
++            question_text = f"{question_text[0:90]}     ║\n║ {question_text[90:]}"
+     return f"""║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║
+ ║  Question {str(question_id)}: {str(question_text)+(" "*(97-len(str(question_id)+str(question_text))))}║
+ ║                                                                                                              ║
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import keyboard\r\nimport os\r\nimport art_dimension\r\nimport time\r\n\r\n\r\ndef title(): # title screen code\r\n    \r\n\tselections = \"> Start\\n  Help\\n  Quit\"  \r\n\t\r\n\twhile True: # constantly checks for keyboard interaction and changes variables accordingly\r\n\t\ttitle_screen = f\"\"\"\r\n{art_dimension.draw_title(selections)}\r\n\"\"\"\r\n\r\n\t\tprint(title_screen)\r\n\t\ttime.sleep(1)\r\n\t\tos.system(\"cls\")\r\n\t\tif keyboard.is_pressed(\"down\") and selections == \"> Start\\n  Help\\n  Quit\":\r\n\t\t\tselections = \"  Start\\n> Help\\n  Quit\"\r\n\t\t\tcontinue\r\n\t\tif keyboard.is_pressed(\"down\") and selections == \"  Start\\n> Help\\n  Quit\":\r\n\t\t\tselections = \"  Start\\n  Help\\n> Quit\"\r\n\t\t\tcontinue\r\n\t\tif keyboard.is_pressed(\"up\") and selections == \"  Start\\n> Help\\n  Quit\":\r\n\t\t\tselections = \"> Start\\n  Help\\n  Quit\"\r\n\t\t\tcontinue\r\n\t\tif keyboard.is_pressed(\"up\") and selections == \"  Start\\n  Help\\n> Quit\":\r\n\t\t\tselections = \"  Start\\n> Help\\n  Quit\"\r\n\t\t\tcontinue\r\n\t\tif keyboard.is_pressed(\"enter\") and selections == \"> Start\\n  Help\\n  Quit\":\r\n\t\t\tgame()\r\n\t\t\tbreak     \r\n\t\tif keyboard.is_pressed(\"enter\") and selections == \"  Start\\n> Help\\n  Quit\":\r\n\t\t\tbreak\r\n\t\tif keyboard.is_pressed(\"enter\") and selections == \"  Start\\n  Help\\n> Quit\":\r\n\t\t\tbreak\r\n\r\n\r\ndef game_over(): # screen that shows up after game ends\r\n    selections = \"> Once Again            Quit\"\r\n\r\n    while True:\r\n        game_over_screen = f\"\"\"\r\ngame over\r\n{selections}\r\n\"\"\"    \r\n        print(game_over_screen)\r\n        os.system(\"cls\")\r\n        if keyboard.is_pressed(\"left\"):\r\n            selections = \"> Once Again            Quit\"\r\n            continue\r\n        if keyboard.is_pressed(\"right\"):\r\n            selections = \"  Once Again          > Quit\"\r\n            continue\r\n        if keyboard.is_pressed(\"enter\") and selections == \"> Once Again            Quit\":\r\n           game()\r\n           break     \r\n        if keyboard.is_pressed(\"enter\") and selections == \"  Once Again          > Quit\":\r\n           break\r\n\r\n\r\ndef character_select(): # where player names their character\r\n\tglobal player1_name\r\n\tglobal player2_name\r\n\tprint(art_dimension.p1_portrait)\r\n\tplayer1_name = input(\"Name: \")\r\n\tos.system(\"cls\")\r\n\tprint(art_dimension.p2_portrait)\r\n\tplayer2_name = input(\"Name: \")\r\n\r\n\r\ndef game():\r\n\tp1_health = 100\r\n\tp2_health = 100\r\n\tp1_keys = [\"a\", \"s\", \"d\"]\r\n\tp2_keys = [\"j\", \"k\", \"l\"]\r\n\twhile p1_health > 0 and p2_health > 0:\r\n\t\t\r\n\t\tstart = time.time()\r\n\t\twhile end - start > 20.0:\r\n\t\t\tend = time.time()\r\n\r\n\r\n\r\n\r\ndef main():\r\n\tpass\r\n        \r\ntitle()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision 76f906d7b76bf88c01e1b92f17df6bdf078ad2da)
++++ b/main.py	(date 1713453578924)
+@@ -2,89 +2,303 @@
+ import os
+ import art_dimension
+ import time
++import random
++
++
++global p1_health
++global p2_health
++
++
++class Questions:
++    def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
++        self.question_id = question_id  # question_id is used to prevent repeats of questions
++        self.question_text = question_text  # question_text stores the question that is being answered
++        self.answer_1 = answer_1  # answer_1 is a possible answer to the question
++        self.answer_2 = answer_2  # answer_2 is a possible answer to the question
++        self.answer_3 = answer_3  # answer_3 is a possible answer to the question
++        self.correct_answer = correct_answer  # correct_answer is the correct answer to the question, is equal to one of the answer arguments
++        self.question_subject = None  # question_subject stores the question's subject
++
++
++class PythonQuestions(Questions):
++    def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
++        super().__init__(question_id, question_text, answer_1, answer_2, answer_3, correct_answer)
++        Questions.question_subject = "Python"
++
++
++class CtiQuestions(Questions):
++    def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
++        super().__init__(question_id, question_text, answer_1, answer_2, answer_3, correct_answer)
++        Questions.question_subject = "CTI"
++
++
++question_1 = CtiQuestions("01",
++                          "Which Data Link Sublayer communicates between networking software at the upper layers and device hardware at the lower layers",
++                          "MAC Sublayer",
++                          "LLC Sublayer",
++                          "ARP Sublayer",
++                          "LLC Sublayer")
++question_2 = CtiQuestions("02",
++                          "What is used to identify the network/host portion of an IPv4 address?",
++                          "Subnet Mask",
++                          "Boolean Mask",
++                          "Address Algorithm",
++                          "Subnet Mask", )
++question_3 = CtiQuestions("03",
++                          "How many layers are in the OSI model?",
++                          "4",
++                          "7",
++                          "6",
++                          "7")
++question_4 = CtiQuestions("04",
++                          "How many layers are in the TCP/IP model?",
++                          "4",
++                          "7",
++                          "6",
++                          "4")
++question_5 = CtiQuestions("05",
++                          "Which layer is present in both the OSI and TCP/IP models?",
++                          "Presentation Layer",
++                          "Session Layer",
++                          "Application Layer",
++                          "Application Layer")
++question_6 = CtiQuestions("06",
++                          "The hexadecimal value \"F\" equates to what decimal value?",
++                          "14",
++                          "15",
++                          "16",
++                          "15")
++question_7 = CtiQuestions("07",
++                          "How many octets are in an IPv4 Address?",
++                          "4",
++                          "8",
++                          "32",
++                          "4")
++question_8 = PythonQuestions("08",
++                             "What is the python programming language named after?",
++                             "Monty Python's Flying Circus",
++                             "The Python of greek mythology",
++                             "The genus of constricting snakes",
++                             "Monty Python's Flying Circus")
++question_9 = CtiQuestions("09",
++                          "The Institute of Electrical and Electronics Engineers is the main organization responsible for the creation of what?",
++                          "Wireless technical standards",
++                          "Wired technical standards",
++                          "LAN devices",
++                          "Wireless technical standards")
++question_10 = CtiQuestions("10",
++                           "DHCP should NOT be used to configure the IP address of which of the following devices?",
++                           "mobile devices",
++                           "desktops",
++                           "printers",
++                           "printers")
++question_11 = CtiQuestions("11",
++                           "Which of the following OSI model layers is NOT a part of the Network interface layer of the TCP/IP model?",
++                           "Network Layer",
++                           "Datalink Layer",
++                           "Physical Layer",
++                           "Network Layer")
++question_12 = CtiQuestions("12",
++                           "In what order are messages sent between a host and a DHCP server so that the host can acquire an IPv4 Address?",
++                           "DHCPDISCOVER -> DHCPOFFER -> DHCPREQUEST -> DHCPACK",
++                           "DHCPDISCOVER -> DHCPREQUEST -> DHCPOFFER -> DHCPACK",
++                           "DHCPDISCOVER -> DHCPACK -> DHCPREQUEST -> DHCPOFFER",
++                           "DHCPDISCOVER -> DHCPOFFER -> DHCPREQUEST -> DHCPACK")
++question_13 = CtiQuestions("13",
++                           "What is true of UDP?",
++                           "It keeps track of segments sent to the destination use acknowledgements",
++                           "It operates on the Network Layer of the OSI model",
++                           "It uses a \"best effort\" deliver system",
++                           "It uses a \"best effort\" deliver system")
++question_14 = CtiQuestions("14",
++                           "Ports 1024 through 49151 are known as...",
++                           "Well-Known Ports",
++                           "Registered Ports",
++                           "Private Ports",
++                           "Registered Ports")
++question_15 = CtiQuestions("15",
++                           "What is NOT true of Fiber-Optic Cabling?",
++                           "It is less expensive than Copper Cabling",
++                           "It uses light to transmit data",
++                           "It is completely immune to EMI and RFI",
++                           "It is less expensive than Copper Cabling")
++question_16 = CtiQuestions("16",
++                           "Which of the following is a UTP Cable Standard?",
++                           "T568B",
++                           "T567A",
++                           "T658A",
++                           "T568B")
++question_17 = PythonQuestions("17",
++                              "Python is considered what of the following?",
++                              "A Compiled Programming Language",
++                              "Closed Source Software",
++                              "An Object-Oriented Programming Language",
++                              "An Object-Oriented Programming Language")
++question_18 = CtiQuestions("18",
++                           "Which of the following is NOT a migration technique between IPv4 and IPv6",
++                           "Dual Stack",
++                           "Translation",
++                           "Burrowing",
++                           "Burrowing")
++question_19 = CtiQuestions("19",
++                           "How long is an IPv6 address in bits?",
++                           "128 Bits",
++                           "64 Bits",
++                           "256 Bits",
++                           "128 Bits")
++question_20 = CtiQuestions("20",
++                           "What address is stored in the layer 2 ethernet frame?",
++                           "MAC Address",
++                           "IP Address",
++                           "Logical Address",
++                           "MAC Address")
++question_21 = CtiQuestions("21",
++                           "What is the loopback address?",
++                           "127.0.0.1",
++                           "8.8.8.8",
++                           "255.255.255.255",
++                           "127.0.0.1")
++question_22 = CtiQuestions("22",
++                           "Which of the following is a Cloud Service?",
++                           "PaaS",
++                           "FaaS",
++                           "MaaS",
++                           "PaaS")
++question_23 = CtiQuestions("23",
++                           "Which command mode in the Cisco IOS Command Line ends with the > symbol?",
++                           "User EXEC Mode",
++                           "Privileged EXEC Mode",
++                           "Global Configuration Mode",
++                           "User EXEC Mode")
++question_24 = CtiQuestions("24",
++                           "Which is the following is NOT a limitation of IPv4?",
++                           "IPv4 Address Depletion",
++                           "Lack of end-to-end-connectivity",
++                           "Slower speeds",
++                           "Slower speeds")
++question_25 = CtiQuestions("25",
++                           "What is ARP used to acquire?",
++                           "Destination IP Address",
++                           "Destination MAC Address",
++                           "Source MAC Address",
++                           "Destination MAC Address")
++
++question_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10, question_11, question_12, question_13, question_14, question_15, question_16, question_17, question_18, question_19, question_20, question_21, question_22, question_23, question_24, question_25]
++
++random.shuffle(question_list)
+ 
+ 
+ def title(): # title screen code
+-    
+-	selections = "> Start\n  Help\n  Quit"  
+-	
+-	while True: # constantly checks for keyboard interaction and changes variables accordingly
+-		title_screen = f"""
++    selections = "> Start\n  Help\n  Quit"
++    while True: # constantly checks for keyboard interaction and changes variables accordingly
++        title_screen = f"""
+ {art_dimension.draw_title(selections)}
+ """
+ 
+-		print(title_screen)
+-		time.sleep(1)
+-		os.system("cls")
+-		if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
+-			selections = "  Start\n> Help\n  Quit"
+-			continue
+-		if keyboard.is_pressed("down") and selections == "  Start\n> Help\n  Quit":
+-			selections = "  Start\n  Help\n> Quit"
+-			continue
+-		if keyboard.is_pressed("up") and selections == "  Start\n> Help\n  Quit":
+-			selections = "> Start\n  Help\n  Quit"
+-			continue
+-		if keyboard.is_pressed("up") and selections == "  Start\n  Help\n> Quit":
+-			selections = "  Start\n> Help\n  Quit"
+-			continue
+-		if keyboard.is_pressed("enter") and selections == "> Start\n  Help\n  Quit":
+-			game()
+-			break     
+-		if keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
+-			break
+-		if keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
+-			break
++        print(title_screen)
++        os.system("cls")
++        time.sleep(.01)
++        if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
++            selections = "  Start\n> Help\n  Quit"
++            continue
++        elif keyboard.is_pressed("down") and selections == "  Start\n> Help\n  Quit":
++            selections = "  Start\n  Help\n> Quit"
++            continue
++        elif keyboard.is_pressed("up") and selections == "  Start\n> Help\n  Quit":
++            selections = "> Start\n  Help\n  Quit"
++            continue
++        elif keyboard.is_pressed("up") and selections == "  Start\n  Help\n> Quit":
++            selections = "  Start\n> Help\n  Quit"
++            continue
++        elif keyboard.is_pressed("enter") and selections == "> Start\n  Help\n  Quit":
++            character_select()
++            break
++        elif keyboard.is_pressed("enter") and selections == "  Start\n> Help\n  Quit":
++            break
++        elif keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
++            exit()
+ 
+ 
+-def game_over(): # screen that shows up after game ends
++def game_over():  # screen that shows up after game ends
+     selections = "> Once Again            Quit"
++    game_over_screen = ""
++    if p1_health < 0:
++        game_over_screen = f"""
++player 2 has won
++{selections}
++"""
+ 
+-    while True:
++    elif p2_health < 0:
+         game_over_screen = f"""
+-game over
++player 1 has won
+ {selections}
+-"""    
++"""
++    while True:
+         print(game_over_screen)
+         os.system("cls")
+         if keyboard.is_pressed("left"):
+             selections = "> Once Again            Quit"
+             continue
+-        if keyboard.is_pressed("right"):
++        elif keyboard.is_pressed("right"):
+             selections = "  Once Again          > Quit"
+             continue
+-        if keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
+-           game()
+-           break     
+-        if keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
+-           break
++        elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
++            character_select()
++            break
++        elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
++            exit()
+ 
+ 
+-def character_select(): # where player names their character
+-	global player1_name
+-	global player2_name
+-	print(art_dimension.p1_portrait)
+-	player1_name = input("Name: ")
+-	os.system("cls")
+-	print(art_dimension.p2_portrait)
+-	player2_name = input("Name: ")
++def character_select():  # where player names their character
++    input()
++    print(art_dimension.p1_portrait)
++    player1_name = input("Name: ")
++    os.system("cls")
++    print(art_dimension.p2_portrait)
++    player2_name = input("Name: ")
++    game(player1_name, player2_name)
+ 
+ 
+-def game():
+-	p1_health = 100
+-	p2_health = 100
+-	p1_keys = ["a", "s", "d"]
+-	p2_keys = ["j", "k", "l"]
+-	while p1_health > 0 and p2_health > 0:
+-		
+-		start = time.time()
+-		while end - start > 20.0:
+-			end = time.time()
+-
+-
++def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of the graphics and the quiz feature
++    global p1_health
++    global p2_health
++    player1_name = p1_name
++    player2_name = p2_name
++    p1_health = 100
++    p2_health = 100
++    p1_keys = ["a", "s", "d"]
++    p2_keys = ["j", "k", "l"]
++    counter = 0  # iterates through question list
++    while p1_health > 0 and p2_health > 0:  # the game keeps going as long as both players have hp
++        start = time.time()
++        while True:
++            print(art_dimension.draw_question(question_list[counter].question_id, question_list[counter].question_text, question_list[counter].answer_1, question_list[counter].answer_2, question_list[counter].answer_3))
++            answers_list = [question_list[counter].answer_1, question_list[counter].answer_2, question_list[counter].answer_3]
++            correct_index = answers_list.index(question_list[counter].correct_answer)  # finds the position of the correct answer
++            end = time.time()
++            time.sleep(.01)
++            if keyboard.is_pressed(p1_keys[correct_index]):
++                print(player1_name, "wins")
++                p2_health -= 20
++                break
++            elif keyboard.is_pressed(p2_keys[correct_index]):
++                print(player2_name, "wins")
++                p1_health -= 20
++                break
++            elif end - start > 20.0:
++                p1_health -= 20
++                p2_health -= 20
++                break
++            os.system("cls")
++        counter += 1
++        time.sleep(1)
++    game_over()
+ 
+ 
+ def main():
+-	pass
+-        
+-title()
+\ No newline at end of file
++    title()  # title calls the function that starts the game
++
++
++main()
++
++
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+--- /dev/null	(date 1713453315594)
++++ b/.idea/inspectionProfiles/profiles_settings.xml	(date 1713453315594)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
