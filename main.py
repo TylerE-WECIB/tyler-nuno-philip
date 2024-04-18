@@ -237,35 +237,36 @@ def title(): # title screen code
 
 
 
-def game_over():  # screen that shows up after game ends
-   selections = "> Once Again            Quit"
-   game_over_screen = ""
-   if p1_health < 0:
-       game_over_screen = f"""
+def game_over(p1_hp, p2_hp):  # screen that shows up after game ends
+	p1_health = p1_hp
+	p2_health = p2_hp
+	selections = "> Once Again            Quit"
+	game_over_screen = ""
+	
+	if p1_health < 0:
+		game_over_screen = f"""
 player 2 has won
 {selections}
 """
-
-
-   elif p2_health < 0:
-       game_over_screen = f"""
+	elif p2_health < 0:
+		game_over_screen = f"""
 player 1 has won
 {selections}
 """
-   while True:
-       print(game_over_screen)
-       os.system("cls")
-       if keyboard.is_pressed("left"):
-           selections = "> Once Again            Quit"
-           continue
-       elif keyboard.is_pressed("right"):
-           selections = "  Once Again          > Quit"
-           continue
-       elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
-           character_select()
-           break
-       elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
-           exit()
+	while True:
+		print(game_over_screen)
+		print('\033[100A\033[2K',end='')
+		if keyboard.is_pressed("left"):
+			selections = "> Once Again            Quit"
+			continue
+		elif keyboard.is_pressed("right"):
+			selections = "  Once Again          > Quit"
+			continue
+		elif keyboard.is_pressed("enter") and selections == "> Once Again            Quit":
+			character_select()
+			break
+		elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
+			exit()
 
 
 
@@ -315,7 +316,7 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
            os.system("cls")
        counter += 1
        time.sleep(1)
-   game_over()
+   game_over(p1_health, p2_health)
 
 
 
@@ -326,4 +327,4 @@ def main():
 
 
 
-main()
+game_over()
