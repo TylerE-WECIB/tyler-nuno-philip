@@ -187,7 +187,7 @@ Version 3.12cti                                                     |_- --|     
 def draw_question(question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
    if len(question_text) > 90:
        if question_text[90] != " ":
-           question_text = f"{question_text[0:90]}-    ║\n║ {question_text[90:]}"
+           question_text = f"{question_text[0:90]}-    ║\n║  {question_text[90:]}"
        else:
            question_text = f"{question_text[0:90]}     ║\n║ {question_text[90:]}"
    return f"""║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║

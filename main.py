@@ -261,8 +261,7 @@ def game_over():  # screen that shows up after game ends Nuno
 {art_dimension.p1_portrait}
 """
     
-    while True:
-        
+    while True: # constantly checks for keyboard interaction and changes variables accordingly
         game_over_screen = f"{winner}\n{selections}"
         print(game_over_screen)
         print('\033[100A\033[2K',end='')
@@ -281,21 +280,18 @@ def game_over():  # screen that shows up after game ends Nuno
             exit()
 
 
-
-
 def character_select():  # where player names their character Nuno
    global player1_name
    global player2_name
-   input()
    os.system("cls")
-   print(art_dimension.p1_portrait)
-   player1_name = input("Name: ")
-   os.system("cls")
-   print(art_dimension.p2_portrait)
-   player2_name = input("Name: ")
+   while player1_name == "":
+    print(art_dimension.p1_portrait)
+    player1_name = input("Name: ")
+    os.system("cls")
+   while player2_name == "":
+    print(art_dimension.p2_portrait)
+    player2_name = input("Name: ")
    game(player1_name, player2_name)
-
-
 
 
 def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of the graphics and the quiz feature Nuno
@@ -334,11 +330,8 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
    game_over()
 
 
-
-
 def main():
    title()  # title calls the function that starts the game
-
 
 
 try:
