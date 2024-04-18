@@ -243,6 +243,7 @@ def title(): # title screen code Nuno
            print(help_file)
            keyboard.wait("enter")
            os.system("cls")
+           input()
            main()
        elif keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
            os.system("cls")
