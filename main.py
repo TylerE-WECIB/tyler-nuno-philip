@@ -292,7 +292,7 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
                 print(player2_name, "is correct!")
                 p1_health -= 20
                 break
-            elif keyboard.is_pressed(p1_keys[not correct_index]):
+            elif keyboard.is_pressed(p1_keys[not correct_index]):  # HOW DID THIS WORK!? - Philip
                 print(f"{player1_name} is incorrect!")
                 p1_health -= 20
             elif keyboard.is_pressed(p2_keys[not correct_index]):
