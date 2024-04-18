@@ -7,6 +7,11 @@ import random
 
 global p1_health
 global p2_health
+global player1_name
+global player2_name
+
+player1_name = ""
+player2_name = ""
 p1_health = 50
 p2_health = 50
 
@@ -201,7 +206,7 @@ random.shuffle(question_list)
 
 
 
-def title(): # title screen code
+def title(): # title screen code Nuno
    selections = "> Start\n  Help\n  Quit"
    os.system("cls")
    while True: # constantly checks for keyboard interaction and changes variables accordingly
@@ -232,24 +237,32 @@ def title(): # title screen code
            break
        elif keyboard.is_pressed("enter") and selections == "  Start\n  Help\n> Quit":
            os.system("cls")
+           print("Thank you for playing")
            exit()
 
 
 
 
-def game_over():  # screen that shows up after game ends
+def game_over():  # screen that shows up after game ends Nuno
+    os.system("cls")
     global p1_health
     global p2_health
     selections = "> Once Again            Quit"
     winner = "None"
 	
     if p1_health <= 0:
-        winner = f"player 2 has won"
+        winner = f"""
+{player2_name} has won
+{art_dimension.p2_portrait}
+"""
     elif p2_health <= 0:
-        winner = f"player 1 has won"
+        winner = f"""
+{player1_name} has won
+{art_dimension.p1_portrait}
+"""
     
     while True:
-        os.system("cls")
+        
         game_over_screen = f"{winner}\n{selections}"
         print(game_over_screen)
         print('\033[100A\033[2K',end='')
@@ -263,12 +276,16 @@ def game_over():  # screen that shows up after game ends
             character_select()
             break
         elif keyboard.is_pressed("enter") and selections == "  Once Again          > Quit":
+            os.system("cls")
+            print("Thank you for playing")
             exit()
 
 
 
 
-def character_select():  # where player names their character
+def character_select():  # where player names their character Nuno
+   global player1_name
+   global player2_name
    input()
    os.system("cls")
    print(art_dimension.p1_portrait)
@@ -281,7 +298,7 @@ def character_select():  # where player names their character
 
 
 
-def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of the graphics and the quiz feature
+def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of the graphics and the quiz feature Nuno
    os.system("cls")
    global p1_health
    global p2_health
@@ -324,4 +341,8 @@ def main():
 
 
 
-main()
+try:
+    main()
+except KeyboardInterrupt:
+    print("Goodbye")
+    exit()
