@@ -204,6 +204,7 @@ random.shuffle(question_list)
 
 def title(): # title screen code
    selections = "> Start\n  Help\n  Quit"
+   os.system("cls")
    while True: # constantly checks for keyboard interaction and changes variables accordingly
        title_screen = f"""
 {art_dimension.draw_title(selections)}
@@ -211,8 +212,8 @@ def title(): # title screen code
 
 
        print(title_screen)
-       os.system("cls")
-       time.sleep(.01)
+       print('\033[100A\033[2K',end='')
+       time.sleep(.1)
        if keyboard.is_pressed("down") and selections == "> Start\n  Help\n  Quit":
            selections = "  Start\n> Help\n  Quit"
            continue
@@ -299,15 +300,15 @@ def game(p1_name, p2_name):  # the actual gameplay loop includes the printing of
            correct_index = answers_list.index(question_list[counter].correct_answer)  # finds the position of the correct answer
            end = time.time()
            time.sleep(.01)
-           if keyboard.is_pressed(p1_keys[correct_index]):
+           if keyboard.is_pressed(p1_keys[correct_index]):  # checks if player 1 clicked the right button
                print(player1_name, "wins")
                p2_health -= 20
                break
-           elif keyboard.is_pressed(p2_keys[correct_index]):
+           elif keyboard.is_pressed(p2_keys[correct_index]):  # checks if player 2 clicked the right button
                print(player2_name, "wins")
                p1_health -= 20
                break
-           elif end - start > 20.0:
+           elif end - start > 20.0:  # times out
                p1_health -= 20
                p2_health -= 20
                break
