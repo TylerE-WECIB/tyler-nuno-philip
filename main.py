@@ -5,8 +5,6 @@ import time
 import random
 
 
-
-
 player1_name = ""
 player2_name = ""
 p1_health = 50
