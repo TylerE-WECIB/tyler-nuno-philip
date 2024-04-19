@@ -325,14 +325,14 @@ def game():  # the actual gameplay loop includes the printing of the graphics an
                 p1_health -= 10
                 break
             elif keyboard.is_pressed(p1_keys[wrong_index[0]]) or keyboard.is_pressed(p1_keys[wrong_index[1]]):  
-                print(art_dimension.draw_gameplay(clear=False, p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
+                print(art_dimension.draw_gameplay(clear=True, p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
                 print(f"{player1_name} is wrong\n")
                 time.sleep(1)
                 p1_can_ans = False
                 print('\033[100A\033[2K',end='')
                 continue
             elif keyboard.is_pressed(p2_keys[wrong_index[0]]) or keyboard.is_pressed(p2_keys[wrong_index[1]]):
-                print(art_dimension.draw_gameplay(clear=False, p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
+                print(art_dimension.draw_gameplay(clear=True, p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
                 print(f"{player2_name} is wrong\n")
                 time.sleep(1)
                 p2_can_ans = False
