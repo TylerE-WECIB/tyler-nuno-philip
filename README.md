@@ -1,10 +1,10 @@
 # tyler-nuno-philip
 
-Required Files: main.py, art_dimension.py
+Required Files: SamuraiCodedown.py, art_dimension.py
 
 Required Modules: keyboard, OS, random, time
 
-Run main.py in the command line to play the game
+Run SamuraiCodedown.py in command prompt to play the game
 
 How to Play:
   - 2 players are required to play the game
