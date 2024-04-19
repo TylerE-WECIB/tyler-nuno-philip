@@ -257,6 +257,10 @@ Draw
 {player1_name} has won
 {art_dimension.p1_portrait}
 """
+    else:
+        winner = f"""
+Draw
+"""
 
     while True:  # constantly checks for keyboard interaction and changes variables accordingly
         game_over_screen = f"{winner}\n{selections}"
