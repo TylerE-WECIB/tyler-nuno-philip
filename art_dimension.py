@@ -78,7 +78,7 @@ p2_portrait = """PLAYER 2
 # ║      \________/  /‾          \ ║
 # ╚════════════════════════════════╝
 
-
+# selections is the menu ui that for the title screen that nuno coded in his file
 def draw_title(selections=">Play\nHelp\nQuit"):
     return f"""
 _________                                   .__
@@ -150,8 +150,9 @@ Version 3.12cti                                                     |_- --|     
 #                                                                     ‾‾‾‾‾
 # {selections}
 
-
+# reuturns the question box under the gameplay. big fstring
 def draw_question(question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
+    # if statement is nuno's code. everything else in the function is tyler's. if statement handles line overflows
     if len(question_text) > 90:
         if question_text[90] != " ":
             question_text = f"{question_text[0:90]}-    ║\n║  {question_text[90:]}"
@@ -194,6 +195,7 @@ def draw_question(question_id=1, question_text="", answer_1="", answer_2="", ans
 # ║                                                                                                              ║
 # ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║
 
+# big fstring basically. renders the health bars for the game
 def draw_health(p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50,timer=20):
     timer = str(int(timer))
     if len(timer) < 2:
@@ -451,17 +453,19 @@ anim_frames = {"blank":"""║                                                   
 # print(anim_frames["final"])
 # print(draw_question())
 
-
+# returns a single frame of the gameplay. it only asks for a couple parameters :) also big fstring
 def draw_gameplay(clear=True, scene = "neutral", p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50, timer=20, question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
     if clear:
         os.system('cls')
     global anim_frames
     return f"{draw_health(p1_name, p1_health, p2_name, p2_health, timer)}\n{anim_frames[scene]}\n{draw_question(question_id, question_text, answer_1, answer_2, answer_3)}"
 
-
+# prints out a bunch of draw_gameplay()s as an animation with the frames from the animation dictionary
 def animate_slash(winner = "draw", p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50, timer=20,  question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
     print(draw_gameplay(True, "neutral", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
     time.sleep(1)
+    # ansi escape sequence. it's weird but basically im just returning to the top of the screen and printing on top of existing text
+    # better than using os.system('cls') here because flickering bad
     print('\033[30A\033[2K', end='')
 
     print(draw_gameplay(False, "neutral", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
@@ -533,7 +537,7 @@ def animate_slash(winner = "draw", p1_name="Goku", p1_health=50, p2_name="Vegeta
             print('\033[30A\033[2K', end='')
         time.sleep(2)
 
-
+# prints the flash you need to react to in the quick draw mode
 def animate_flash(p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50, timer=20, question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
     print(draw_gameplay(True, "flash", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
     time.sleep(1/12)
@@ -543,10 +547,11 @@ def animate_flash(p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50, 
     time.sleep((1 / 12))
     print('\033[30A\033[2K', end='')
 
-print(draw_gameplay())
-time.sleep(3)
-animate_flash()
-print(draw_gameplay())
+
 # debug lines
 # animate_slash(winner="player_2")
 # print(draw_gameplay(p1_health=30))
+# print(draw_gameplay())
+# time.sleep(3)
+# animate_flash()
+# print(draw_gameplay())
