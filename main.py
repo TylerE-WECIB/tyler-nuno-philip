@@ -10,11 +10,11 @@ player2_name = ""
 p1_health = 50
 p2_health = 50
 
-with open("README.md", "r") as help_file:
+with open("README.md", "r") as help_file:  # Opens the readme file for the help menu
     help_file = help_file.read()
 
 
-class Questions:
+class Questions:  # Philip
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         self.question_id = question_id  # question_id is used to prevent repeats of questions
         self.question_text = question_text  # question_text stores the question that is being answered
@@ -25,18 +25,18 @@ class Questions:
         self.question_subject = None  # question_subject stores the question's subject
 
 
-class PythonQuestions(Questions):
+class PythonQuestions(Questions):  # Philip
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         super().__init__(question_id, question_text, answer_1, answer_2, answer_3, correct_answer)
         Questions.question_subject = "Python"
 
 
-class CtiQuestions(Questions):
+class CtiQuestions(Questions):  # Philip
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         super().__init__(question_id, question_text, answer_1, answer_2, answer_3, correct_answer)
         Questions.question_subject = "CTI"
 
-
+# All questions by Philip
 question_1 = CtiQuestions("01",
                           "Which Data Link Sublayer communicates between networking software and device hardware?",
                           "MAC Sublayer",
