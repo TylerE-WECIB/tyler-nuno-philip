@@ -257,10 +257,6 @@ Draw
 {player1_name} has won
 {art_dimension.p1_portrait}
 """
-    else:
-        winner = f"""
-Draw
-"""
 
     while True:  # constantly checks for keyboard interaction and changes variables accordingly
         game_over_screen = f"{winner}\n{selections}"
@@ -350,8 +346,8 @@ def game():  # the actual gameplay loop includes the printing of the graphics an
                 p1_health -= 10
                 p2_health -= 10 
                 break
-            elif end - start > 20.0:  # times out
-                art_dimension.animate_slash(winner="draw", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+            elif end - start > 10.0:  # times out
+                art_dimension.animate_slash(winner="draw", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p1_health -= 10
                 p2_health -= 10
                 break
