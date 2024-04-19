@@ -244,7 +244,11 @@ def game_over():  # screen that shows up after game ends Nuno
     selections = "> Once Again            Quit"
     winner = "None"
 
-    if p1_health <= 0:
+    if p1_health <= 0 and p2_health <= 0:
+        winner = f"""
+Draw
+"""
+    elif p1_health <= 0:
         winner = f"""
 {player2_name} has won
 {art_dimension.p2_portrait}
@@ -254,12 +258,8 @@ def game_over():  # screen that shows up after game ends Nuno
 {player1_name} has won
 {art_dimension.p1_portrait}
 """
-    else:
-        winner = f"""
-Draw
-"""
-    
-    while True: # constantly checks for keyboard interaction and changes variables accordingly
+
+    while True:  # constantly checks for keyboard interaction and changes variables accordingly
         game_over_screen = f"{winner}\n{selections}"
         print(game_over_screen)
         print('\033[100A\033[2K',end='')
@@ -308,29 +308,29 @@ def game():  # the actual gameplay loop includes the printing of the graphics an
             answers_list = [question_list[counter].answer_1, question_list[counter].answer_2, question_list[counter].answer_3]
             correct_index = answers_list.index(question_list[counter].correct_answer)  # finds the position of the correct answer
             end = time.time()
-            print(art_dimension.draw_gameplay(p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
+            print(art_dimension.draw_gameplay(p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
             time.sleep(.01)
             print('\033[100A\033[2K',end='')
             if keyboard.is_pressed(p1_keys[correct_index]):  # checks if player 1 clicked the right button
-                art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+                art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p2_health -= 10
                 break
             elif keyboard.is_pressed(p2_keys[correct_index]):  # checks if player 2 clicked the right button
-                art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+                art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p1_health -= 10
                 break
             elif keyboard.is_pressed(p1_keys[not correct_index]) or keyboard.is_pressed(p1_keys[not correct_index]):
                 print("wrong")
-                art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+                art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p1_health -= 20
                 break
             elif keyboard.is_pressed(p2_keys[not correct_index]):
                 print("wrong")
-                art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+                art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p2_health -= 20
                 break
-            elif end - start > 20.0:  # times out
-                art_dimension.animate_slash(winner="draw", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+            elif end - start > 10.0:  # times out
+                art_dimension.animate_slash(winner="draw", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p1_health -= 10
                 p2_health -= 10
                 break
