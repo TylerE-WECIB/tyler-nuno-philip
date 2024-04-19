@@ -254,6 +254,10 @@ def game_over():  # screen that shows up after game ends Nuno
 {player1_name} has won
 {art_dimension.p1_portrait}
 """
+    else:
+        winner = f"""
+Draw
+"""
     
     while True: # constantly checks for keyboard interaction and changes variables accordingly
         game_over_screen = f"{winner}\n{selections}"
@@ -295,18 +299,18 @@ def game():  # the actual gameplay loop includes the printing of the graphics an
     global p2_health
     global player1_name
     global player2_name
-    p1_keys = ["a", "s", "d"]
-    p2_keys = ["j", "k", "l"]
     counter = 0  # iterates through question list
     while p1_health > 0 and p2_health > 0:  # the game keeps going as long as both players have hp
         start = time.time()
+        p1_keys = ["a", "s", "d"]
+        p2_keys = ["j", "k", "l"]
         while True:
             answers_list = [question_list[counter].answer_1, question_list[counter].answer_2, question_list[counter].answer_3]
             correct_index = answers_list.index(question_list[counter].correct_answer)  # finds the position of the correct answer
             end = time.time()
             print(art_dimension.draw_gameplay(p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
-            print('\033[1000A\033[2K', end='')
             time.sleep(.01)
+            print('\033[100A\033[2K',end='')
             if keyboard.is_pressed(p1_keys[correct_index]):  # checks if player 1 clicked the right button
                 art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p2_health -= 10
@@ -315,10 +319,14 @@ def game():  # the actual gameplay loop includes the printing of the graphics an
                 art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p1_health -= 10
                 break
-            elif keyboard.is_pressed(p1_keys[not correct_index]):
+            elif keyboard.is_pressed(p1_keys[not correct_index]) or keyboard.is_pressed(p1_keys[not correct_index]):
+                print("wrong")
+                art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p1_health -= 20
                 break
             elif keyboard.is_pressed(p2_keys[not correct_index]):
+                print("wrong")
+                art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p2_health -= 20
                 break
             elif end - start > 20.0:  # times out
@@ -326,10 +334,8 @@ def game():  # the actual gameplay loop includes the printing of the graphics an
                 p1_health -= 10
                 p2_health -= 10
                 break
-            # print('\033[100A\033[2K',end='')
+
         counter += 1
-        time.sleep(1)
-        os.system("cls")
     game_over()
 
 
