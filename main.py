@@ -25,14 +25,10 @@ class Questions:  # Philip
         self.question_subject = None  # question_subject stores the question's subject
 
 
-
-
 class PythonQuestions(Questions):  # Philip
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         super().__init__(question_id, question_text, answer_1, answer_2, answer_3, correct_answer)
         Questions.question_subject = "Python"
-
-
 
 
 class CtiQuestions(Questions):  # Philip
@@ -48,47 +44,47 @@ question_1 = CtiQuestions("01",
                           "ARP Sublayer",
                           "LLC Sublayer")
 question_2 = CtiQuestions("02",
-                         "What is used to identify the network/host portion of an IPv4 address?",
-                         "Subnet Mask",
-                         "Boolean Mask",
-                         "Address Algorithm",
-                         "Subnet Mask", )
+                          "What is used to identify the network/host portion of an IPv4 address?",
+                          "Subnet Mask",
+                          "Boolean Mask",
+                          "Address Algorithm",
+                          "Subnet Mask", )
 question_3 = CtiQuestions("03",
-                         "How many layers are in the OSI model?",
-                         "4",
-                         "7",
-                         "6",
-                         "7")
+                          "How many layers are in the OSI model?",
+                          "4",
+                          "7",
+                          "6",
+                          "7")
 question_4 = CtiQuestions("04",
-                         "How many layers are in the TCP/IP model?",
-                         "4",
-                         "7",
-                         "6",
-                         "4")
+                          "How many layers are in the TCP/IP model?",
+                          "4",
+                          "7",
+                          "6",
+                          "4")
 question_5 = CtiQuestions("05",
-                         "Which layer is present in both the OSI and TCP/IP models?",
-                         "Presentation Layer",
-                         "Session Layer",
-                         "Application Layer",
-                         "Application Layer")
+                          "Which layer is present in both the OSI and TCP/IP models?",
+                          "Presentation Layer",
+                          "Session Layer",
+                          "Application Layer",
+                          "Application Layer")
 question_6 = CtiQuestions("06",
-                         "The hexadecimal value \"F\" equates to what decimal value?",
-                         "14",
-                         "15",
-                         "16",
-                         "15")
+                          "The hexadecimal value \"F\" equates to what decimal value?",
+                          "14",
+                          "15",
+                          "16",
+                          "15")
 question_7 = CtiQuestions("07",
-                         "How many octets are in an IPv4 Address?",
-                         "4",
-                         "8",
-                         "32",
-                         "4")
+                          "How many octets are in an IPv4 Address?",
+                          "4",
+                          "8",
+                          "32",
+                          "4")
 question_8 = PythonQuestions("08",
-                            "What is the python programming language named after?",
-                            "Monty Python's Flying Circus",
-                            "The Python of greek mythology",
-                            "The genus of constricting snakes",
-                            "Monty Python's Flying Circus")
+                             "What is the python programming language named after?",
+                             "Monty Python's Flying Circus",
+                             "The Python of greek mythology",
+                             "The genus of constricting snakes",
+                             "Monty Python's Flying Circus")
 question_9 = CtiQuestions("09",
                           "The IEEE is primarily responsible for creating what?",
                           "Wireless technical standards",
@@ -114,35 +110,35 @@ question_12 = CtiQuestions("12",
                            "DHCPDISCOVER -> DHCPACK -> DHCPREQUEST -> DHCPOFFER",
                            "DHCPDISCOVER -> DHCPOFFER -> DHCPREQUEST -> DHCPACK")
 question_13 = CtiQuestions("13",
-                          "What is true of UDP?",
-                          "It keeps track of segments sent to the destination use acknowledgements",
-                          "It operates on the Network Layer of the OSI model",
-                          "It uses a \"best effort\" deliver system",
-                          "It uses a \"best effort\" deliver system")
+                           "What is true of UDP?",
+                           "It keeps track of segments sent to the destination use acknowledgements",
+                           "It operates on the Network Layer of the OSI model",
+                           "It uses a \"best effort\" deliver system",
+                           "It uses a \"best effort\" deliver system")
 question_14 = CtiQuestions("14",
-                          "Ports 1024 through 49151 are known as...",
-                          "Well-Known Ports",
-                          "Registered Ports",
-                          "Private Ports",
-                          "Registered Ports")
+                           "Ports 1024 through 49151 are known as...",
+                           "Well-Known Ports",
+                           "Registered Ports",
+                           "Private Ports",
+                           "Registered Ports")
 question_15 = CtiQuestions("15",
-                          "What is NOT true of Fiber-Optic Cabling?",
-                          "It is less expensive than Copper Cabling",
-                          "It uses light to transmit data",
-                          "It is completely immune to EMI and RFI",
-                          "It is less expensive than Copper Cabling")
+                           "What is NOT true of Fiber-Optic Cabling?",
+                           "It is less expensive than Copper Cabling",
+                           "It uses light to transmit data",
+                           "It is completely immune to EMI and RFI",
+                           "It is less expensive than Copper Cabling")
 question_16 = CtiQuestions("16",
-                          "Which of the following is a UTP Cable Standard?",
-                          "T568B",
-                          "T567A",
-                          "T658A",
-                          "T568B")
+                           "Which of the following is a UTP Cable Standard?",
+                           "T568B",
+                           "T567A",
+                           "T658A",
+                           "T568B")
 question_17 = PythonQuestions("17",
-                             "Python is considered what of the following?",
-                             "A Compiled Programming Language",
-                             "Closed Source Software",
-                             "An Object-Oriented Programming Language",
-                             "An Object-Oriented Programming Language")
+                              "Python is considered what of the following?",
+                              "A Compiled Programming Language",
+                              "Closed Source Software",
+                              "An Object-Oriented Programming Language",
+                              "An Object-Oriented Programming Language")
 question_18 = CtiQuestions("18",
                            "Which is NOT a migration technique between IPv4 and IPv6?",
                            "Dual Stack",
@@ -150,47 +146,47 @@ question_18 = CtiQuestions("18",
                            "Burrowing",
                            "Burrowing")
 question_19 = CtiQuestions("19",
-                          "How long is an IPv6 address in bits?",
-                          "128 Bits",
-                          "64 Bits",
-                          "256 Bits",
-                          "128 Bits")
+                           "How long is an IPv6 address in bits?",
+                           "128 Bits",
+                           "64 Bits",
+                           "256 Bits",
+                           "128 Bits")
 question_20 = CtiQuestions("20",
-                          "What address is stored in the layer 2 ethernet frame?",
-                          "MAC Address",
-                          "IP Address",
-                          "Logical Address",
-                          "MAC Address")
+                           "What address is stored in the layer 2 ethernet frame?",
+                           "MAC Address",
+                           "IP Address",
+                           "Logical Address",
+                           "MAC Address")
 question_21 = CtiQuestions("21",
-                          "What is the loopback address?",
-                          "127.0.0.1",
-                          "8.8.8.8",
-                          "255.255.255.255",
-                          "127.0.0.1")
+                           "What is the loopback address?",
+                           "127.0.0.1",
+                           "8.8.8.8",
+                           "255.255.255.255",
+                           "127.0.0.1")
 question_22 = CtiQuestions("22",
-                          "Which of the following is a Cloud Service?",
-                          "PaaS",
-                          "FaaS",
-                          "MaaS",
-                          "PaaS")
+                           "Which of the following is a Cloud Service?",
+                           "PaaS",
+                           "FaaS",
+                           "MaaS",
+                           "PaaS")
 question_23 = CtiQuestions("23",
-                          "Which command mode in the Cisco IOS Command Line ends with the > symbol?",
-                          "User EXEC Mode",
-                          "Privileged EXEC Mode",
-                          "Global Configuration Mode",
-                          "User EXEC Mode")
+                           "Which command mode in the Cisco IOS Command Line ends with the > symbol?",
+                           "User EXEC Mode",
+                           "Privileged EXEC Mode",
+                           "Global Configuration Mode",
+                           "User EXEC Mode")
 question_24 = CtiQuestions("24",
-                          "Which is the following is NOT a limitation of IPv4?",
-                          "IPv4 Address Depletion",
-                          "Lack of end-to-end-connectivity",
-                          "Slower speeds",
-                          "Slower speeds")
+                           "Which is the following is NOT a limitation of IPv4?",
+                           "IPv4 Address Depletion",
+                           "Lack of end-to-end-connectivity",
+                           "Slower speeds",
+                           "Slower speeds")
 question_25 = CtiQuestions("25",
-                          "What is ARP used to acquire?",
-                          "Destination IP Address",
-                          "Destination MAC Address",
-                          "Source MAC Address",
-                          "Destination MAC Address")
+                           "What is ARP used to acquire?",
+                           "Destination IP Address",
+                           "Destination MAC Address",
+                           "Source MAC Address",
+                           "Destination MAC Address")
 
 
 question_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10, question_11, question_12, question_13, question_14, question_15, question_16, question_17, question_18, question_19, question_20, question_21, question_22, question_23, question_24, question_25]
@@ -206,7 +202,6 @@ def title(): # title screen code Nuno
         title_screen = f"""
 {art_dimension.draw_title(selections)}
 """
-
 
         print(title_screen)
         print('\033[100A\033[2K',end='')
@@ -237,8 +232,6 @@ def title(): # title screen code Nuno
             os.system("cls")
             print("Thank you for playing")
             exit()
-
-
 
 
 def game_over():  # screen that shows up after game ends Nuno
