@@ -38,7 +38,7 @@ class CtiQuestions(Questions):
 
 
 question_1 = CtiQuestions("01",
-                          "Which Data Link Sublayer communicates between networking software at the upper layers and device hardware at the lower layers",
+                          "Which Data Link Sublayer communicates between networking software and device hardware?",
                           "MAC Sublayer",
                           "LLC Sublayer",
                           "ARP Sublayer",
@@ -86,25 +86,25 @@ question_8 = PythonQuestions("08",
                              "The genus of constricting snakes",
                              "Monty Python's Flying Circus")
 question_9 = CtiQuestions("09",
-                          "The Institute of Electrical and Electronics Engineers is the main organization responsible for the creation of what?",
+                          "The IEEE is primarily responsible for creating what?",
                           "Wireless technical standards",
                           "Wired technical standards",
                           "LAN devices",
                           "Wireless technical standards")
 question_10 = CtiQuestions("10",
-                           "DHCP should NOT be used to configure the IP address of which of the following devices?",
+                           "DHCP should NOT be used to configure the IP address of which of these devices?",
                            "mobile devices",
                            "desktops",
                            "printers",
                            "printers")
 question_11 = CtiQuestions("11",
-                           "Which of the following OSI model layers is NOT a part of the Network interface layer of the TCP/IP model?",
+                           "Which OSI model layers is NOT a part of the Network interface layer of the TCP/IP model?",
                            "Network Layer",
                            "Datalink Layer",
                            "Physical Layer",
                            "Network Layer")
 question_12 = CtiQuestions("12",
-                           "In what order are messages sent between a host and a DHCP server so that the host can acquire an IPv4 Address?",
+                           "In what order are messages sent to acquire an IPv4 Address via DHCP?",
                            "DHCPDISCOVER -> DHCPOFFER -> DHCPREQUEST -> DHCPACK",
                            "DHCPDISCOVER -> DHCPREQUEST -> DHCPOFFER -> DHCPACK",
                            "DHCPDISCOVER -> DHCPACK -> DHCPREQUEST -> DHCPOFFER",
@@ -140,7 +140,7 @@ question_17 = PythonQuestions("17",
                               "An Object-Oriented Programming Language",
                               "An Object-Oriented Programming Language")
 question_18 = CtiQuestions("18",
-                           "Which of the following is NOT a migration technique between IPv4 and IPv6",
+                           "Which is NOT a migration technique between IPv4 and IPv6?",
                            "Dual Stack",
                            "Translation",
                            "Burrowing",
@@ -191,8 +191,6 @@ question_25 = CtiQuestions("25",
 
 question_list = [question_1, question_2, question_3, question_4, question_5, question_6, question_7, question_8, question_9, question_10, question_11, question_12, question_13, question_14, question_15, question_16, question_17, question_18, question_19, question_20, question_21, question_22, question_23, question_24, question_25]
 
-
-random.shuffle(question_list)
 
 
 def title(): # title screen code Nuno
@@ -293,7 +291,7 @@ def character_select():  # where player names their character Nuno
     game()
 
 
-def game():  # the actual gameplay loop includes the printing of the graphics and the quiz feature Nuno
+def game():  # the actual gameplay loop includes the printing of the graphics and the quiz feature Nuno and Philip(Wrong answer punishment and know when the wrong answer is inputted)
     os.system("cls")
     global p1_health
     global p2_health
@@ -302,35 +300,51 @@ def game():  # the actual gameplay loop includes the printing of the graphics an
     counter = 0  # iterates through question list
     while p1_health > 0 and p2_health > 0:  # the game keeps going as long as both players have hp
         start = time.time()
+        p1_can_ans = True
+        p2_can_ans = True
         p1_keys = ["a", "s", "d"]
         p2_keys = ["j", "k", "l"]
         while True:
             answers_list = [question_list[counter].answer_1, question_list[counter].answer_2, question_list[counter].answer_3]
             correct_index = answers_list.index(question_list[counter].correct_answer)  # finds the position of the correct answer
+            wrong_index = []
+            for x in answers_list:  # makes a list of the wrong answers
+                wrong_index.append(answers_list.index(x))
+            del wrong_index[correct_index]  # deletes the right
             end = time.time()
-            print(art_dimension.draw_gameplay(p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
+            print(art_dimension.draw_gameplay(clear=False, p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
             time.sleep(.01)
             print('\033[100A\033[2K',end='')
-            if keyboard.is_pressed(p1_keys[correct_index]):  # checks if player 1 clicked the right button
-                art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+            
+            if keyboard.is_pressed(p1_keys[correct_index]) and p1_can_ans == True:  # checks if player 1 clicked the right button
+                art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p2_health -= 10
                 break
-            elif keyboard.is_pressed(p2_keys[correct_index]):  # checks if player 2 clicked the right button
-                art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+            elif keyboard.is_pressed(p2_keys[correct_index]) and p2_can_ans == True:  # checks if player 2 clicked the right button
+                art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p1_health -= 10
                 break
-            elif keyboard.is_pressed(p1_keys[not correct_index]) or keyboard.is_pressed(p1_keys[not correct_index]):
-                print("wrong")
-                art_dimension.animate_slash(winner="player_2", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
-                p1_health -= 20
+            elif keyboard.is_pressed(p1_keys[wrong_index[0]]) or keyboard.is_pressed(p1_keys[wrong_index[1]]):  
+                print(art_dimension.draw_gameplay(clear=False, p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
+                print(f"{player1_name} is wrong\n")
+                time.sleep(1)
+                p1_can_ans = False
+                print('\033[100A\033[2K',end='')
+                continue
+            elif keyboard.is_pressed(p2_keys[wrong_index[0]]) or keyboard.is_pressed(p2_keys[wrong_index[1]]):
+                print(art_dimension.draw_gameplay(clear=False, p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3))
+                print(f"{player2_name} is wrong\n")
+                time.sleep(1)
+                p2_can_ans = False
+                print('\033[100A\033[2K',end='')
+                continue
+            elif p1_can_ans == False and p2_can_ans == False:
+                art_dimension.animate_slash(winner="draw", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20-(end-start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+                p1_health -= 10
+                p2_health -= 10 
                 break
-            elif keyboard.is_pressed(p2_keys[not correct_index]):
-                print("wrong")
-                art_dimension.animate_slash(winner="player_1", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
-                p2_health -= 20
-                break
-            elif end - start > 10.0:  # times out
-                art_dimension.animate_slash(winner="draw", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(10 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
+            elif end - start > 20.0:  # times out
+                art_dimension.animate_slash(winner="draw", p1_name=player1_name, p1_health=p1_health, p2_name=player2_name, p2_health=p2_health, timer=int(20 - (end - start)), question_id=question_list[counter].question_id, question_text=question_list[counter].question_text, answer_1=question_list[counter].answer_1, answer_2=question_list[counter].answer_2, answer_3=question_list[counter].answer_3)
                 p1_health -= 10
                 p2_health -= 10
                 break
@@ -344,6 +358,7 @@ def main():
     global p2_health
     global player1_name
     global player2_name
+    random.shuffle(question_list)
     player1_name = ""  # resetting
     player2_name = ""
     p1_health = 50
