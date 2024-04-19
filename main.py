@@ -15,7 +15,7 @@ p1_health = 50
 p2_health = 50
 
 
-class Questions:
+class Questions:  # created by Philip
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         self.question_id = question_id  # question_id is used to prevent repeats of questions
         self.question_text = question_text  # question_text stores the question that is being answered
@@ -26,16 +26,18 @@ class Questions:
         self.question_subject = None  # question_subject stores the question's subject
 
 
-class PythonQuestions(Questions):
+class PythonQuestions(Questions):  # created by Philip
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         super().__init__(question_id, question_text, answer_1, answer_2, answer_3, correct_answer)
         Questions.question_subject = "Python"
 
 
-class CtiQuestions(Questions):
+class CtiQuestions(Questions):  # created by Philip
     def __init__(self, question_id, question_text, answer_1, answer_2, answer_3, correct_answer):
         super().__init__(question_id, question_text, answer_1, answer_2, answer_3, correct_answer)
         Questions.question_subject = "CTI"
+
+# All questions were created by Philip
 
 
 question_1 = CtiQuestions("01",
