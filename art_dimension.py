@@ -426,6 +426,24 @@ anim_frames = {"blank":"""║                                                   
 ║  ----------__---=______/‾‾‾‾‾---__                                          ________\\  \\--------_‾__==_      ║
 ║   /     \\/            /‾‾\\        ‾‾--_                            _-‾‾|‾‾‾‾          -------‾‾‾ / \\   \\     ║
 ║   |-----/---------------------------/---->                        /_____\\____________/_|________|_/_____\\    ║
+║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║""",
+
+"flash":"""║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
+║██████████████████████████████████████████████████████████████████████████████████████████████████████████████║
 ║══════════════════════════════════════════════════════════════════════════════════════════════════════════════║"""}
 
 #debug lines
@@ -491,7 +509,7 @@ def animate_slash(winner = "draw", p1_name="Goku", p1_health=50, p2_name="Vegeta
             print("\n"+draw_gameplay(False, "p1_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
             time.sleep((1/12))
             print('\033[30A\033[2K', end='')
-            print(draw_gameplay(False, "p1_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3)+f"\n{" "*112}")
+            print(draw_gameplay(False, "p1_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3)+f"\n{''*112}")
             time.sleep((1/12))
             print('\033[30A\033[2K', end='')
         time.sleep(2)
@@ -501,7 +519,7 @@ def animate_slash(winner = "draw", p1_name="Goku", p1_health=50, p2_name="Vegeta
             print("\n" + draw_gameplay(False, "p2_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
             time.sleep((1 / 12))
             print('\033[30A\033[2K', end='')
-            print(draw_gameplay(False, "p2_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3) + f"\n{" " * 112}")
+            print(draw_gameplay(False, "p2_win", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3) + f"\n{'' * 112}")
             time.sleep((1 / 12))
             print('\033[30A\033[2K', end='')
         time.sleep(2)
@@ -510,12 +528,25 @@ def animate_slash(winner = "draw", p1_name="Goku", p1_health=50, p2_name="Vegeta
             print("\n"+draw_gameplay(False, "draw", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
             time.sleep((1/12))
             print('\033[30A\033[2K', end='')
-            print(draw_gameplay(False, "draw", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3)+f"\n{" "*112}")
+            print(draw_gameplay(False, "draw", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3)+f"\n{''*112}")
             time.sleep((1/12))
             print('\033[30A\033[2K', end='')
         time.sleep(2)
 
 
+def animate_flash(p1_name="Goku", p1_health=50, p2_name="Vegeta", p2_health=50, timer=20, question_id=1, question_text="", answer_1="", answer_2="", answer_3=""):
+    print(draw_gameplay(True, "flash", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep(1/12)
+    print('\033[30A\033[2K', end='')
+
+    print(draw_gameplay(False, "neutral", p1_name, p1_health, p2_name, p2_health, timer, question_id, question_text, answer_1, answer_2, answer_3))
+    time.sleep((1 / 12))
+    print('\033[30A\033[2K', end='')
+
+print(draw_gameplay())
+time.sleep(3)
+animate_flash()
+print(draw_gameplay())
 # debug lines
 # animate_slash(winner="player_2")
 # print(draw_gameplay(p1_health=30))
