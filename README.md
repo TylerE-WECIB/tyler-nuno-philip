@@ -7,6 +7,7 @@ Required Modules: keyboard, OS, random, time
 Run SamuraiCodedown.py in command prompt to play the game
 
 How to Play:
+  - Select with "shift"
   - 2 players are required to play the game
   - The game will prompt both players with a multiple choice question with 3 possible answers
   - The first player to correctly answer the question within the time limit will win the rounds (think Jeopardy)
